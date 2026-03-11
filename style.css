@@ -5,72 +5,72 @@
 
 body {
     font-family: "IBM Plex Sans", sans-serif;
-    background: #e9edf3;
-    margin: 0;
-    padding: 0;
-    color: #1b1b1b;
+    background : #e9edf3;
+    margin     : 0;
+    padding    : 0;
+    color      : #1b1b1b;
 }
 
 /* ========================================
    CONTAINER
 ======================================== */
 .container {
-    max-width: 1150px;
-    margin: 30px auto;
-    background: white;
-    padding: 30px;
+    max-width    : 1150px;
+    margin       : 30px auto;
+    background   : white;
+    padding      : 30px;
     border-radius: 8px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    box-shadow   : 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* ========================================
    HEADER
 ======================================== */
 header h1 {
-    text-align: center;
+    text-align   : center;
     margin-bottom: 25px;
-    font-weight: 600;
-    color: #1d3557;
+    font-weight  : 600;
+    color        : #1d3557;
 }
 
 /* ========================================
    EXAM INFO BAR
 ======================================== */
 .exam-info {
-    display: flex;
+    display        : flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 15px;
+    align-items    : center;
+    flex-wrap      : wrap;
+    gap            : 12px;
+    margin-bottom  : 15px;
 }
 
 .exam-info div {
-    display: flex;
+    display    : flex;
     align-items: center;
-    gap: 6px;
+    gap        : 6px;
 }
 
 /* Ícones dentro da exam-info */
 .exam-info i {
-    color: #1d3557;
-    font-size: 20px;
-    min-width: 24px;
+    color     : #1d3557;
+    font-size : 20px;
+    min-width : 24px;
     text-align: center;
 }
 
 /* Timer */
 .timer {
-    font-size: 22px;
+    font-size  : 22px;
     font-weight: 700;
-    color: #d90429;
+    color      : #d90429;
 }
 
 /* Score, answered, mode info */
 .score-info,
 .answered-info,
 .mode-info {
-    font-size: 15px;
+    font-size  : 15px;
     font-weight: 600;
 }
 
@@ -78,17 +78,17 @@ header h1 {
    PROGRESS BAR
 ======================================== */
 .progressbar {
-    height: 16px;
-    background: #dfe6ee;
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 18px 0;
+    height       : 8px;
+    background   : #dfe6ee;
+    border-radius: 4px;
+    overflow     : hidden;
+    margin       : 18px 0;
 }
 
 .progress {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #1d7dfa, #00c2ff);
+    height    : 100%;
+    width     : 0%;
+    background: linear-gradient(90deg, #303030, #8d8d8d);
     transition: width 0.3s ease;
 }
 
@@ -96,28 +96,28 @@ header h1 {
    TOP CONTROLS
 ======================================== */
 .top-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display      : flex;
+    flex-wrap    : wrap;
+    gap          : 10px;
     margin-bottom: 20px;
 }
 
 .top-controls button {
-    display: flex;
+    display    : flex;
     align-items: center;
-    gap: 6px;
+    gap        : 6px;
 }
 
 /* ========================================
    QUESTION BLOCK
 ======================================== */
 .question {
-    padding: 22px;
+    padding      : 22px;
     margin-bottom: 25px;
-    border-left: 4px solid #d0d7e2;
-    background: #f9fbfd;
+    border-left  : 4px solid #d0d7e2;
+    background   : #f9fbfd;
     border-radius: 6px;
-    transition: box-shadow 0.2s ease;
+    transition   : box-shadow 0.2s ease;
 }
 
 .question:hover {
@@ -126,29 +126,29 @@ header h1 {
 
 .question b {
     font-size: 18px;
-    color: #1d3557;
+    color    : #1d3557;
 }
 
 /* TOPIC */
 .topic {
-    margin-top: 6px;
-    font-size: 13px;
-    color: #5f6b7a;
+    margin-top : 6px;
+    font-size  : 13px;
+    color      : #5f6b7a;
     font-weight: 600;
 }
 
 /* SCENARIO */
 .scenario {
-    margin-top: 10px;
+    margin-top   : 10px;
     margin-bottom: 12px;
-    font-style: italic;
-    color: #444;
+    font-style   : italic;
+    color        : #444;
 }
 
 /* QUESTION TEXT */
 .questionText {
     margin-bottom: 12px;
-    font-size: 15px;
+    font-size    : 15px;
 }
 
 /* ANSWERS */
@@ -157,68 +157,75 @@ header h1 {
 }
 
 .answers label {
-    display: block;
-    padding: 12px;
-    margin: 6px 0;
+    display      : block;
+    padding      : 12px;
+    margin       : 6px 0;
     border-radius: 6px;
-    cursor: pointer;
-    border: 1px solid #d8dee9;
-    background: white;
-    transition: all 0.15s ease;
+    cursor       : pointer;
+    border       : 1px solid #d8dee9;
+    background   : white;
+    transition   : all 0.15s ease;
 }
 
 .answers label:hover {
-    background: #eef4ff;
+    background  : #eef4ff;
     border-color: #90b7ff;
 }
 
 .answers input[type="radio"] {
     margin-right: 10px;
-    cursor: pointer;
+    cursor      : pointer;
 }
 
 /* CORRECT / WRONG */
 .correct {
     background: #e6f7ec !important;
-    border: 1px solid #2ecc71;
+    border    : 1px solid #2ecc71;
 }
 
 .wrong {
     background: #fdecea !important;
-    border: 1px solid #e74c3c;
+    border    : 1px solid #e74c3c;
+}
+
+.question.unanswered {
+    border          : 2px solid red;
+    padding         : 10px;
+    border-radius   : 5px;
+    background-color: #ffe6e6;
 }
 
 /* ========================================
    STUDY MODE PANEL
 ======================================== */
 .study-panel {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f0f6ff;
-    border-left: 5px solid #2a6df4;
+    margin-top   : 30px;
+    padding      : 20px;
+    background   : #f0f6ff;
+    border-left  : 5px solid #2a6df4;
     border-radius: 6px;
 }
 
 .study-panel h3 {
-    margin-top: 0;
-    color: #1d3557;
-    display: flex;
+    margin-top : 0;
+    color      : #1d3557;
+    display    : flex;
     align-items: center;
-    gap: 8px;
+    gap        : 8px;
 }
 
 /* ========================================
    STATISTICS
 ======================================== */
 .stat {
-    background: #f7f9fc;
-    border: 1px solid #dfe5ef;
-    padding: 14px;
+    background   : #f7f9fc;
+    border       : 1px solid #dfe5ef;
+    padding      : 14px;
     border-radius: 6px;
     margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display      : flex;
+    align-items  : center;
+    gap          : 8px;
 }
 
 /* ========================================
@@ -226,23 +233,39 @@ header h1 {
 ======================================== */
 .buttons {
     margin-top: 25px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display   : flex;
+    flex-wrap : wrap;
+    gap       : 10px;
+}
+
+.start-quiz-btn {
+    margin-bottom   : 32px;
+    background-color: #303030;
+    color           : #e1e1e1;
+    box-shadow      : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-weight     : 300px;
+    font-family     : IBM Plex Sans, sans-serif;
+
+    &:hover {
+        background-color: #008a29;
+        font-weight     : 500;
+    }
 }
 
 /* BUTTON STYLE */
 button {
-    padding: 11px 20px;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.05s ease;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    padding         : 11px 20px;
+    border          : none;
+    border-radius   : 6px;
+    font-size       : 15px;
+    cursor          : pointer;
+    transition      : background 0.2s ease, transform 0.05s ease;
+    /* font-weight  : 600; */
+    display         : flex;
+    align-items     : center;
+    gap             : 6px;
+    font-family     : IBM Plex Sans,
+        sans-serif;
 }
 
 button i {
@@ -257,39 +280,66 @@ button:active {
 /* PRIMARY BUTTONS */
 #finish {
     background: #008a29;
-    color: white;
+    color     : white;
 }
-#finish:hover { background: #1d57c8; }
+
+#finish:hover {
+    background: #1d57c8;
+}
 
 #pause {
     background: #ffb703;
-    color: black;
+    color     : black;
 }
-#pause:hover { background: #f4a300; }
+
+#pause:hover {
+    background: #f4a300;
+}
 
 #restart {
     background: #6c757d;
-    color: white;
-    display: none;
+    color     : white;
+    display   : none;
 }
-#restart:hover { background: #545b62; }
 
-#toggleStudyMode { background: #00943e; color: white; }
-#toggleStudyMode:hover { background: #008ec4; }
+#restart:hover {
+    background: #545b62;
+}
 
-#openStats { background: #6f42c1; color: white; }
-#openStats:hover { background: #5a34a6; }
+#toggleStudyMode {
+    background: #00943e;
+    color     : white;
+}
 
-#questionNavigator { background: #17a2b8; color: white; }
-#questionNavigator:hover { background: #128596; }
+#toggleStudyMode:hover {
+    background: #008ec4;
+}
+
+#openStats {
+    background: #6f42c1;
+    color     : white;
+}
+
+#openStats:hover {
+    background: #5a34a6;
+}
+
+#questionNavigator {
+    background: #17a2b8;
+    color     : white;
+}
+
+#questionNavigator:hover {
+    background: #128596;
+}
 
 /* ========================================
    RESULT
 ======================================== */
 #result {
-    margin-top: 35px;
-    font-size: 22px;
-    text-align: center;
+    margin-top : 35px;
+    font-size  : 22px;
+    text-align : center;
     font-weight: 700;
 }
 
@@ -297,100 +347,180 @@ button:active {
    OVERLAY BASE
 ======================================== */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.65);
-    display: none;
-    align-items: center;
+    position       : fixed;
+    top            : 0;
+    left           : 0;
+    width          : 100%;
+    height         : 100%;
+    background     : rgba(0, 0, 0, 0.65);
+    display        : none;
+    align-items    : center;
     justify-content: center;
-    z-index: 999;
-    cursor: pointer;
+    z-index        : 999;
+    cursor         : pointer;
 }
 
 .overlay-content {
-    position: relative;
-    background: white;
-    padding: 40px;
+    position     : relative;
+    background   : white;
+    padding      : 40px;
     border-radius: 8px;
-    text-align: center;
-    max-width: 450px;
-    width: 90%;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    overflow-y: auto;
-    max-height: 80vh;
-    cursor: default;
+    text-align   : center;
+    max-width    : 450px;
+    width        : 90%;
+    box-shadow   : 0 8px 25px rgba(0, 0, 0, 0.2);
+    overflow-y   : auto;
+    max-height   : 80vh;
+    cursor       : default;
 }
 
 .overlay-content h2 {
-    margin-top: 0;
-    color: #1d3557;
-    display: flex;
+    margin-top : 0;
+    color      : #1d3557;
+    display    : flex;
     align-items: center;
-    gap: 8px;
+    gap        : 8px;
 }
 
 .overlay-buttons {
-    margin-top: 20px;
-    display: flex;
+    margin-top     : 20px;
+    display        : flex;
     justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap            : 10px;
+    flex-wrap      : wrap;
 }
 
 .overlay button {
-    display: flex;
+    display    : flex;
     align-items: center;
-    gap: 6px;
+    gap        : 6px;
 }
 
 /* OVERLAY BUTTON COLORS */
-#resumeOverlay { background: #2ecc71; color: white; padding: 12px 25px; font-size: 17px; }
-#resumeOverlay:hover { background: #27ae60; }
-#restartOverlay { background: #e74c3c; color: white; padding: 12px 25px; font-size: 17px; }
-#restartOverlay:hover { background: #c0392b; }
-#closeWarning { background: #e74c3c; color: white; padding: 12px 25px; font-size: 17px; }
-#closeWarning:hover { background: #c0392b; }
-#closeStats { background: #6c757d; color: white; padding: 12px 25px; font-size: 16px; }
-#closeStats:hover { background: #545b62; }
+#resumeOverlay {
+    background: #2ecc71;
+    color     : white;
+    padding   : 12px 25px;
+    font-size : 17px;
+}
+
+#resumeOverlay:hover {
+    background: #27ae60;
+}
+
+#restartOverlay {
+    background: #e74c3c;
+    color     : white;
+    padding   : 12px 25px;
+    font-size : 17px;
+}
+
+#restartOverlay:hover {
+    background: #c0392b;
+}
+
+#closeWarning {
+    background: #e74c3c;
+    color     : white;
+    padding   : 12px 25px;
+    font-size : 17px;
+}
+
+#closeWarning:hover {
+    background: #c0392b;
+}
+
+#closeStats {
+    background: #6c757d;
+    color     : white;
+    padding   : 12px 25px;
+    font-size : 16px;
+}
+
+#closeStats:hover {
+    background: #545b62;
+}
 
 /* NAVIGATOR */
 #navigatorContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    max-height: 300px;
-    overflow-y: auto;
+    display        : flex;
+    flex-wrap      : wrap;
+    gap            : 10px;
+    max-height     : 300px;
+    overflow-y     : auto;
     justify-content: center;
-    margin-top: 15px;
+    margin-top     : 15px;
 }
 
 #navigatorContainer button {
-    flex: 0 0 80px;
-    padding: 10px;
-    font-size: 14px;
+    flex         : 0 0 80px;
+    padding      : 10px;
+    font-size    : 14px;
     border-radius: 6px;
-    border: 1px solid #d8dee9;
-    background: #f0f6ff;
-    cursor: pointer;
-    transition: all 0.15s ease;
+    border       : 1px solid #d8dee9;
+    background   : #f0f6ff;
+    cursor       : pointer;
+    transition   : all 0.15s ease;
 }
 
 #navigatorContainer button:hover {
-    background: #d0e4ff;
+    background  : #d0e4ff;
     border-color: #90b7ff;
+}
+
+/* ========================================
+   QUESTION NAVIGATOR RESULT COLORS
+======================================== */
+
+#navigatorContainer button.nav-correct {
+    background : #2ecc71;
+    color      : white;
+    border     : 1px solid #27ae60;
+    font-weight: 600;
+}
+
+#navigatorContainer button.nav-correct:hover {
+    background: #27ae60;
+}
+
+#navigatorContainer button.nav-wrong {
+    background : #e74c3c;
+    color      : white;
+    border     : 1px solid #c0392b;
+    font-weight: 600;
+}
+
+#navigatorContainer button.nav-wrong:hover {
+    background: #c0392b;
 }
 
 /* ========================================
    MOBILE
 ======================================== */
 @media (max-width: 768px) {
-    .container { padding: 20px; }
-    .exam-info { flex-direction: column; align-items: flex-start; }
-    .timer { font-size: 20px; }
-    .buttons { flex-direction: column; }
-    button { width: 100%; justify-content: center; }
-    .top-controls { flex-direction: column; }
+    .container {
+        padding: 20px;
+    }
+
+    .exam-info {
+        flex-direction: column;
+        align-items   : flex-start;
+    }
+
+    .timer {
+        font-size: 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width          : 100%;
+        justify-content: center;
+    }
+
+    .top-controls {
+        flex-direction: column;
+    }
 }

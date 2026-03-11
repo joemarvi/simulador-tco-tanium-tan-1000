@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OFFICIAL TANIUM SIMULATION - TCO</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Font Awesome Free via CDN (funciona para todos os ícones free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -19,19 +17,32 @@
         <header>
             <h1>OFFICIAL SIMULADO TANIUM TCO</h1>
 
+            <button type="button" id="startQuiz" class="start-quiz-btn">
+                <i class="fa-solid fa-play"></i> Iniciar Simulado
+            </button>
+
             <div class="exam-info">
+                <div class="attempts-info">
+                    <i class="fa-solid fa-user-check"></i> Tentativas:
+                    <span id="currentAttempt">0</span> / <span id="maxAttempts">3</span> -
+                    Restam: <span id="remainingAttempts">3</span>
+                </div>
+
                 <div class="timer">
                     <i class="fa-solid fa-clock"></i> Tempo restante:
                     <span id="time">105:00</span>
                 </div>
+
                 <div class="score-info">
                     <i class="fa-solid fa-list-ol"></i> Questões:
                     <span id="totalQuestions">0</span>
                 </div>
+
                 <div class="answered-info">
                     <i class="fa-solid fa-check-circle"></i> Respondidas:
                     <span id="answeredCount">0</span>
                 </div>
+
                 <div class="mode-info">
                     <i class="fa-solid fa-book"></i> Modo Estudo:
                     <span id="studyModeStatus">Desativado</span>
@@ -43,7 +54,7 @@
             </div>
         </header>
 
-        <!-- TOP CONTROLS -->
+        <!-- CONTROLES SUPERIORES -->
         <section class="top-controls">
             <button type="button" id="toggleStudyMode">
                 <i class="fa-solid fa-book"></i> Ativar modo estudo
@@ -58,50 +69,72 @@
             </button>
         </section>
 
-        <!-- QUESTION NAVIGATOR OVERLAY -->
+        <!-- NAVEGADOR -->
         <div id="navigatorOverlay" class="overlay" style="display:none;">
             <div class="overlay-content">
                 <h2><i class="fa-solid fa-list"></i> Navegação pelas Questões</h2>
+
                 <div id="navigatorContainer"></div>
+
                 <div class="overlay-buttons">
-                    <button type="button" id="closeNavigator"><i class="fa-solid fa-times"></i> Fechar</button>
+                    <button type="button" id="closeNavigator">
+                        <i class="fa-solid fa-times"></i> Fechar
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- PAUSE OVERLAY -->
+        <!-- PAUSE -->
         <div id="pauseOverlay" class="overlay" style="display:none;">
             <div class="overlay-content">
                 <h2><i class="fa-solid fa-pause-circle"></i> Prova Pausada</h2>
                 <p>A prova está pausada.</p>
+
                 <div class="overlay-buttons">
-                    <button type="button" id="resumeOverlay"><i class="fa-solid fa-play"></i> Retomar prova</button>
-                    <button type="button" id="restartOverlay"><i class="fa-solid fa-redo"></i> Reiniciar prova</button>
+                    <button type="button" id="resumeOverlay">
+                        <i class="fa-solid fa-play"></i> Retomar prova
+                    </button>
+
+                    <button type="button" id="restartOverlay">
+                        <i class="fa-solid fa-redo"></i> Reiniciar prova
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- WARNING OVERLAY -->
+        <!-- WARNING -->
         <div id="warningOverlay" class="overlay" style="display:none;">
             <div class="overlay-content">
                 <h2><i class="fa-solid fa-triangle-exclamation"></i> Atenção</h2>
                 <p>Você ainda não respondeu todas as questões.</p>
+
                 <div class="overlay-buttons">
-                    <button type="button" id="closeWarning"><i class="fa-solid fa-arrow-right"></i> Continuar
-                        prova</button>
+                    <button type="button" id="closeWarning">
+                        <i class="fa-solid fa-arrow-right"></i> Continuar prova
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- STATISTICS OVERLAY -->
+        <!-- STATS -->
         <div id="statsOverlay" class="overlay" style="display:none;">
             <div class="overlay-content stats-box">
-                <h2><i class="fa-solid fa-chart-bar"></i> Estatísticas de Desempenho</h2>
+
+                <h2>
+                    <i class="fa-solid fa-chart-bar"></i>
+                    Estatísticas de Desempenho
+                </h2>
+
                 <p>Desempenho por tema:</p>
+
                 <div id="statsContainer"></div>
+
                 <div class="overlay-buttons">
-                    <button type="button" id="closeStats"><i class="fa-solid fa-times"></i> Fechar</button>
+                    <button type="button" id="closeStats">
+                        <i class="fa-solid fa-times"></i> Fechar
+                    </button>
                 </div>
+
             </div>
         </div>
 
@@ -110,23 +143,41 @@
             <form id="quiz" autocomplete="off"></form>
         </main>
 
-        <!-- STUDY MODE EXPLANATION -->
+        <!-- EXPLICAÇÃO -->
         <section id="studyExplanation" class="study-panel" style="display:none;">
             <h3><i class="fa-solid fa-book-open"></i> Explicação da resposta</h3>
             <div id="explanationContent"></div>
         </section>
 
-        <!-- CONTROLS -->
+        <!-- CONTROLES -->
         <footer>
             <div class="buttons">
-                <button type="button" id="pause"><i class="fa-solid fa-pause"></i> Pausar tentativa</button>
-                <button type="button" id="finish"><i class="fa-solid fa-check"></i> Finalizar prova</button>
-                <button type="button" id="restart"><i class="fa-solid fa-redo"></i> Refazer prova</button>
+                <button type="button" id="pause">
+                    <i class="fa-solid fa-pause"></i> Pausar tentativa
+                </button>
+
+                <button type="button" id="finish">
+                    <i class="fa-solid fa-check"></i> Finalizar prova
+                </button>
+
+                <button type="button" id="restart">
+                    <i class="fa-solid fa-redo"></i> Refazer prova
+                </button>
             </div>
         </footer>
 
-        <!-- RESULT -->
+        <!-- RESULTADO -->
         <section id="result"></section>
+
+        <div id="reviewControls" style="display:none; text-align:center; margin-top:20px;">
+            <button type="button" id="reviewWrong">
+                🔎 Revisar apenas questões erradas
+            </button>
+
+            <button type="button" id="reviewAll">
+                📚 Mostrar todas as questões
+            </button>
+        </div>
 
     </div>
 
