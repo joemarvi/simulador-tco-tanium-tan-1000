@@ -2,14 +2,10 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>SIMULADO OFICIAL TANIUM - TCO</title>
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -19,44 +15,35 @@
         <!-- HEADER -->
 
         <header>
-
             <h1>🔥 SIMULADO OFICIAL TANIUM TCO</h1>
 
             <div class="exam-info">
-
                 <div class="timer">
                     Tempo restante:
                     <span id="time">105:00</span>
                 </div>
-
                 <div class="score-info">
                     Questões:
                     <span id="totalQuestions">0</span>
                 </div>
-
                 <div class="answered-info">
                     Respondidas:
                     <span id="answeredCount">0</span>
                 </div>
-
                 <div class="mode-info">
                     Modo Estudo:
                     <span id="studyModeStatus">Desativado</span>
                 </div>
-
             </div>
 
             <div class="progressbar">
                 <div class="progress" id="progress"></div>
             </div>
-
         </header>
-
 
         <!-- TOP CONTROLS -->
 
         <section class="top-controls">
-
             <button type="button" id="toggleStudyMode">
                 📚 Ativar modo estudo
             </button>
@@ -68,146 +55,94 @@
             <button type="button" id="questionNavigator">
                 📑 Navegar pelas questões
             </button>
-
         </section>
 
+        <!-- QUESTION NAVIGATOR OVERLAY -->
+
+        <div id="navigatorOverlay" class="overlay" style="display:none;">
+            <div class="overlay-content">
+                <h2>📑 Navegação pelas Questões</h2>
+                <div id="navigatorContainer">
+                    <!-- Lista de questões preenchida dinamicamente -->
+                </div>
+                <div class="overlay-buttons">
+                    <button type="button" id="closeNavigator">Fechar</button>
+                </div>
+            </div>
+        </div>
 
         <!-- PAUSE OVERLAY -->
 
         <div id="pauseOverlay" class="overlay" style="display:none;">
-
             <div class="overlay-content">
-
                 <h2>⏸ Prova Pausada</h2>
-
                 <p>A prova está pausada.</p>
-
                 <div class="overlay-buttons">
-
-                    <button type="button" id="resumeOverlay">
-                        ▶ Retomar prova
-                    </button>
-
-                    <button type="button" id="restartOverlay">
-                        🔄 Reiniciar prova
-                    </button>
-
+                    <button type="button" id="resumeOverlay">▶ Retomar prova</button>
+                    <button type="button" id="restartOverlay">🔄 Reiniciar prova</button>
                 </div>
-
             </div>
-
         </div>
-
 
         <!-- WARNING OVERLAY -->
 
         <div id="warningOverlay" class="overlay" style="display:none;">
-
             <div class="overlay-content">
-
                 <h2>⚠ Atenção</h2>
-
                 <p>Você ainda não respondeu todas as questões.</p>
-
                 <div class="overlay-buttons">
-
-                    <button type="button" id="closeWarning">
-                        Continuar prova
-                    </button>
-
+                    <button type="button" id="closeWarning">Continuar prova</button>
                 </div>
-
             </div>
-
         </div>
-
 
         <!-- STATISTICS OVERLAY -->
 
         <div id="statsOverlay" class="overlay" style="display:none;">
-
             <div class="overlay-content stats-box">
-
                 <h2>📊 Estatísticas de Desempenho</h2>
-
                 <p>Desempenho por tema:</p>
-
                 <div id="statsContainer">
-
                     <!-- Preenchido dinamicamente pelo script.js -->
-
                 </div>
-
                 <div class="overlay-buttons">
-
-                    <button type="button" id="closeStats">
-                        Fechar
-                    </button>
-
+                    <button type="button" id="closeStats">Fechar</button>
                 </div>
-
             </div>
-
         </div>
-
 
         <!-- QUIZ -->
 
         <main>
-
             <form id="quiz" autocomplete="off">
-
-                <!-- As perguntas são inseridas pelo script.js -->
-
+                <!-- As perguntas são inseridas dinamicamente pelo script.js -->
             </form>
-
         </main>
-
 
         <!-- STUDY MODE EXPLANATION -->
 
         <section id="studyExplanation" class="study-panel" style="display:none;">
-
             <h3>📚 Explicação da resposta</h3>
-
             <div id="explanationContent">
-
                 <!-- Conteúdo inserido dinamicamente -->
-
             </div>
-
         </section>
-
 
         <!-- CONTROLS -->
 
         <footer>
-
             <div class="buttons">
-
-                <button type="button" id="pause">
-                    ⏸ Pausar tentativa
-                </button>
-
-                <button type="button" id="finish">
-                    ✅ Finalizar prova
-                </button>
-
-                <button type="button" id="restart">
-                    🔄 Refazer prova
-                </button>
-
+                <button type="button" id="pause">⏸ Pausar tentativa</button>
+                <button type="button" id="finish">✅ Finalizar prova</button>
+                <button type="button" id="restart">🔄 Refazer prova</button>
             </div>
-
         </footer>
-
 
         <!-- RESULT -->
 
         <section id="result"></section>
 
     </div>
-
 
     <!-- SCRIPTS -->
 
