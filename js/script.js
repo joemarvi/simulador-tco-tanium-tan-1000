@@ -466,10 +466,10 @@ document.addEventListener("DOMContentLoaded", function () {
             if (resultContent) {
 
                 resultContent.innerHTML =
-                    `<h2>Resultado</h2>
-                     Pontuação: ${score} / ${questions.length}<br>
-                     Percentual: ${percent}%<br>
-                     Resultado: <b>${percent >= 70 ? "✅ APROVADO" : "❌ REPROVADO"}</b>`;
+                    `
+                     Score: ${score} / ${questions.length}<br>
+                     Percentage: ${percent}%<br>
+                     Result: <b>${percent >= 70 ? "✅ APPROVED" : "❌ FAIL  "}</b>`;
 
             }
 
