@@ -1103,6 +1103,1659 @@ export const questionBank = [
         tags: ["architecture"],
         examWeight: 2,
         shuffleAnswers: true
+    },
+    {
+        id: 61,
+        domain: "Sensors",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An administrator wants to know which user is currently logged in.",
+        question: "Which sensor provides information about the logged-in user?",
+        answers: [
+            "Logged In User",
+            "Operating System",
+            "Network Adapter",
+            "Computer Name"
+        ],
+        correct: 0,
+        explanation: "The Logged In User sensor returns the active user on the endpoint.",
+        tags: ["sensors", "inventory"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 62,
+        domain: "Sensors",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Reviewing endpoint data collection.",
+        question: "Sensors can collect both real-time and cached information from endpoints.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Some sensors execute live while others use cached data.",
+        tags: ["sensors"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 63,
+        domain: "Sensors",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team collects hardware inventory.",
+        question: "Which information can sensors typically retrieve?",
+        answers: [
+            "CPU model",
+            "Memory size",
+            "Disk capacity",
+            "SQL database schema"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Hardware sensors can gather CPU, RAM, and disk information.",
+        tags: ["inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 64,
+        domain: "Asking Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to know which machines have low disk space.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Free Disk Space",
+            "Operating System",
+            "Running Processes",
+            "Network Adapter"
+        ],
+        correct: 0,
+        explanation: "Free Disk Space reports available disk capacity.",
+        tags: ["queries"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 65,
+        domain: "Asking Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Understanding Tanium queries.",
+        question: "Questions can be scoped to a specific computer group.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Questions can target defined endpoint groups.",
+        tags: ["queries"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 66,
+        domain: "Asking Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team is building a complex query.",
+        question: "Which components are part of a Tanium question?",
+        answers: [
+            "Sensors",
+            "Filters",
+            "Computer groups",
+            "Database tables"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Questions combine sensors, filters, and group targeting.",
+        tags: ["queries"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 67,
+        domain: "Refining Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to target only Linux endpoints.",
+        question: "Which filter should be applied?",
+        answers: [
+            "Operating System contains Linux",
+            "Hostname contains linux",
+            "Machine Type equals Linux",
+            "Endpoint Type equals Linux"
+        ],
+        correct: 0,
+        explanation: "Filtering by Operating System is the correct method.",
+        tags: ["filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 68,
+        domain: "Refining Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Working with dynamic groups.",
+        question: "Dynamic computer groups rely on sensor results to determine membership.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Dynamic groups evaluate sensor conditions automatically.",
+        tags: ["groups"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 69,
+        domain: "Refining Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An operator organizes endpoint groups.",
+        question: "Which advantages do computer groups provide?",
+        answers: [
+            "Scoped queries",
+            "Targeted actions",
+            "Improved organization",
+            "Automatic OS patching"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Groups help scope queries and actions.",
+        tags: ["groups"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 70,
+        domain: "Taking Action",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "A script needs to run across several endpoints.",
+        question: "What is required before executing an action?",
+        answers: [
+            "Define the target endpoints",
+            "Restart the Tanium server",
+            "Update SQL database",
+            "Create new sensors"
+        ],
+        correct: 0,
+        explanation: "Actions must target endpoints or groups.",
+        tags: ["actions"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 71,
+        domain: "Taking Action",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Action management review.",
+        question: "Actions can have expiration times to limit execution windows.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Expiration prevents actions from running indefinitely.",
+        tags: ["actions"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 72,
+        domain: "Taking Action",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An admin is configuring a large deployment.",
+        question: "Which settings help control action execution?",
+        answers: [
+            "Distribution time",
+            "Start time",
+            "Target group",
+            "Database index"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Distribution, start time, and targeting control actions.",
+        tags: ["actions"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 73,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "A team wants detailed endpoint threat visibility.",
+        question: "Which module provides threat detection capabilities?",
+        answers: [
+            "Reveal",
+            "Deploy",
+            "Patch",
+            "Connect"
+        ],
+        correct: 0,
+        explanation: "Reveal focuses on threat detection and investigation.",
+        tags: ["modules"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 74,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Reviewing Tanium Connect.",
+        question: "The Connect module exports Tanium data to external systems.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Connect integrates Tanium data with other tools.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 75,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An organization uses multiple modules.",
+        question: "Which modules assist with vulnerability and patch management?",
+        answers: [
+            "Comply",
+            "Patch",
+            "Deploy",
+            "Discover"
+        ],
+        correct: [0, 1],
+        explanation: "Comply handles vulnerability scanning while Patch manages updates.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 76,
+        domain: "Reporting",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An analyst creates visual metrics.",
+        question: "Where are charts and visualizations commonly displayed?",
+        answers: [
+            "Dashboards",
+            "Saved Questions",
+            "Endpoint Logs",
+            "Server Console"
+        ],
+        correct: 0,
+        explanation: "Dashboards visualize collected data.",
+        tags: ["dashboards"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 77,
+        domain: "Reporting",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Exporting Tanium results.",
+        question: "CSV files are commonly used for exporting Tanium query data.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "CSV files are widely compatible with spreadsheets.",
+        tags: ["reporting"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 78,
+        domain: "Reporting",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A reporting dashboard is being built.",
+        question: "Which elements can dashboards include?",
+        answers: [
+            "Charts",
+            "Tables",
+            "Saved question results",
+            "SQL server backups"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Dashboards include charts and query results.",
+        tags: ["reporting"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 79,
+        domain: "Security",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin is reviewing user privileges.",
+        question: "Which feature limits which actions a user can perform?",
+        answers: [
+            "RBAC",
+            "Endpoint Sensors",
+            "Peer Chains",
+            "Saved Questions"
+        ],
+        correct: 0,
+        explanation: "Role-Based Access Control limits user capabilities.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 80,
+        domain: "Security",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Security auditing.",
+        question: "Audit logs can be used to review administrative actions.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Audit logs track administrative activities.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 81,
+        domain: "Security",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Security best practices review.",
+        question: "Which features improve administrative security?",
+        answers: [
+            "RBAC",
+            "Audit logs",
+            "Encryption",
+            "Peer chains"
+        ],
+        correct: [0, 1, 2],
+        explanation: "RBAC, logging, and encryption enhance security.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 82,
+        domain: "Performance",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Performance analysis.",
+        question: "Endpoint network latency can impact query response time.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Network latency affects response speed.",
+        tags: ["performance"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 83,
+        domain: "Performance",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin analyzes slow results.",
+        question: "Which factor is most likely to slow queries?",
+        answers: [
+            "Complex sensor logic",
+            "Dashboard colors",
+            "Server theme",
+            "Endpoint hostname length"
+        ],
+        correct: 0,
+        explanation: "Complex sensors increase execution time.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 84,
+        domain: "Performance",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Investigating query delays.",
+        question: "Which elements influence query performance?",
+        answers: [
+            "Sensor complexity",
+            "Network latency",
+            "Endpoint count",
+            "Dashboard layout"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Sensors, endpoints, and network conditions affect performance.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 85,
+        domain: "Architecture",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A system architect evaluates Tanium infrastructure.",
+        question: "Which component aggregates endpoint responses before returning results to the server?",
+        answers: [
+            "Peer endpoint",
+            "Tanium Database",
+            "SQL Engine",
+            "Dashboard Module"
+        ],
+        correct: 0,
+        explanation: "Peers aggregate results before sending them up the chain.",
+        tags: ["architecture"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 86,
+        domain: "Architecture",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Understanding endpoint roles.",
+        question: "Every endpoint in a Tanium environment can act as a relay for queries.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Endpoints pass queries and responses along the chain.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 87,
+        domain: "Architecture",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Reviewing distributed architecture.",
+        question: "Which characteristics define Tanium's architecture?",
+        answers: [
+            "Peer communication",
+            "Distributed processing",
+            "Local execution",
+            "Centralized scanning"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Tanium relies on distributed peer communication.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 88,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to distribute software updates.",
+        question: "Which module manages software deployment?",
+        answers: [
+            "Deploy",
+            "Reveal",
+            "Connect",
+            "Discover"
+        ],
+        correct: 0,
+        explanation: "Deploy distributes software packages.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 89,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Module capabilities review.",
+        question: "The Discover module helps identify unmanaged devices on the network.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Discover identifies assets that are not yet managed.",
+        tags: ["modules"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 90,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Endpoint management review.",
+        question: "Which modules help manage endpoint configuration or updates?",
+        answers: [
+            "Deploy",
+            "Patch",
+            "Comply",
+            "Connect"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Deploy, Patch, and Comply manage endpoints.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 91,
+        domain: "Sensors",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An administrator wants to identify the IP address of endpoints.",
+        question: "Which sensor provides the endpoint IP address?",
+        answers: [
+            "IP Address",
+            "Computer Name",
+            "Operating System",
+            "Network Status"
+        ],
+        correct: 0,
+        explanation: "The IP Address sensor returns the endpoint network address.",
+        tags: ["sensors", "network"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 92,
+        domain: "Sensors",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Sensor performance review.",
+        question: "Complex sensors can increase query execution time on endpoints.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Sensors with complex logic require more execution time.",
+        tags: ["sensors", "performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 93,
+        domain: "Sensors",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An operator collects endpoint network information.",
+        question: "Which network information can sensors retrieve?",
+        answers: [
+            "IP address",
+            "MAC address",
+            "Network adapter details",
+            "Firewall vendor contracts"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Sensors can gather network adapter, IP, and MAC details.",
+        tags: ["network", "inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 94,
+        domain: "Asking Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst wants to identify endpoints with a specific installed application.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Installed Applications",
+            "Running Processes",
+            "Operating System",
+            "Logged In User"
+        ],
+        correct: 0,
+        explanation: "Installed Applications lists software installed on endpoints.",
+        tags: ["queries", "inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 95,
+        domain: "Asking Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Question management review.",
+        question: "Questions in Tanium are used to retrieve endpoint information in real time.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Questions collect real-time endpoint data through sensors.",
+        tags: ["queries"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 96,
+        domain: "Asking Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team is designing standardized queries.",
+        question: "Which benefits come from using saved questions?",
+        answers: [
+            "Reusability",
+            "Consistency",
+            "Easier dashboard integration",
+            "Automatic patch deployment"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Saved questions improve reuse and reporting consistency.",
+        tags: ["queries", "reporting"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 97,
+        domain: "Refining Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to target laptops only.",
+        question: "Which filter should be used?",
+        answers: [
+            "Machine Type equals Laptop",
+            "Operating System equals Windows",
+            "Hostname contains LAP",
+            "CPU Type equals Mobile"
+        ],
+        correct: 0,
+        explanation: "Machine Type helps distinguish laptops from other systems.",
+        tags: ["filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 98,
+        domain: "Refining Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Query targeting review.",
+        question: "Computer groups help limit which endpoints receive a query.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Groups define endpoint scope.",
+        tags: ["groups"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 99,
+        domain: "Refining Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An organization manages thousands of endpoints.",
+        question: "Which advantages come from dynamic groups?",
+        answers: [
+            "Automatic membership updates",
+            "Reduced manual management",
+            "Sensor-based targeting",
+            "Manual IP assignment"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Dynamic groups automatically adjust membership.",
+        tags: ["groups"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 100,
+        domain: "Taking Action",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An admin deploys a configuration change.",
+        question: "Which feature executes commands across endpoints?",
+        answers: [
+            "Tanium Actions",
+            "Saved Questions",
+            "Sensors",
+            "Dashboards"
+        ],
+        correct: 0,
+        explanation: "Actions allow administrators to run commands.",
+        tags: ["actions"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 101,
+        domain: "Taking Action",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Action control review.",
+        question: "Action distribution time can reduce the load on the network.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Distribution spreads execution across endpoints.",
+        tags: ["actions", "performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 102,
+        domain: "Taking Action",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An action must run safely across many systems.",
+        question: "Which controls help manage action execution?",
+        answers: [
+            "Target computer groups",
+            "Start time scheduling",
+            "Expiration time",
+            "Dashboard permissions"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Actions support targeting, scheduling, and expiration.",
+        tags: ["actions"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 103,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "A security analyst wants endpoint threat investigation tools.",
+        question: "Which module provides threat hunting capabilities?",
+        answers: [
+            "Reveal",
+            "Deploy",
+            "Connect",
+            "Discover"
+        ],
+        correct: 0,
+        explanation: "Reveal provides threat detection and investigation features.",
+        tags: ["modules", "security"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 104,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Module functionality review.",
+        question: "The Patch module helps automate operating system patch management.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Patch manages operating system updates.",
+        tags: ["modules", "patch"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 105,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Endpoint management planning.",
+        question: "Which modules help maintain endpoint health?",
+        answers: [
+            "Patch",
+            "Deploy",
+            "Comply",
+            "Connect"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Patch, Deploy, and Comply manage endpoint health.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 106,
+        domain: "Reporting",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An analyst builds visual reports.",
+        question: "Which interface is primarily used to visualize Tanium data?",
+        answers: [
+            "Dashboards",
+            "Endpoint Console",
+            "Server Terminal",
+            "SQL Manager"
+        ],
+        correct: 0,
+        explanation: "Dashboards display query results visually.",
+        tags: ["reporting"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 107,
+        domain: "Reporting",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Reporting review.",
+        question: "Saved questions can be used as data sources for dashboards.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Dashboards often rely on saved questions.",
+        tags: ["reporting"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 108,
+        domain: "Reporting",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team exports Tanium results.",
+        question: "Which formats are commonly used to export data?",
+        answers: [
+            "CSV",
+            "JSON",
+            "XML",
+            "SQL Backup"
+        ],
+        correct: [0, 1, 2],
+        explanation: "CSV, JSON, and XML are common export formats.",
+        tags: ["reporting"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 109,
+        domain: "Security",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An administrator needs to control user permissions.",
+        question: "Which mechanism enforces user access levels?",
+        answers: [
+            "RBAC",
+            "Peer Chains",
+            "Endpoint Sensors",
+            "Network Filters"
+        ],
+        correct: 0,
+        explanation: "Role-Based Access Control defines user permissions.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 110,
+        domain: "Security",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Security monitoring.",
+        question: "Audit logs provide records of administrative actions.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Audit logs track administrative activities.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 111,
+        domain: "Security",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A security review is being conducted.",
+        question: "Which mechanisms help protect Tanium environments?",
+        answers: [
+            "RBAC",
+            "Audit logging",
+            "Data encryption",
+            "Dashboard themes"
+        ],
+        correct: [0, 1, 2],
+        explanation: "RBAC, logs, and encryption strengthen security.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 112,
+        domain: "Performance",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Performance monitoring.",
+        question: "Large endpoint environments benefit from Tanium’s peer-to-peer architecture.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Peer chains allow efficient scaling.",
+        tags: ["performance", "architecture"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+    {
+        id: 113,
+        domain: "Performance",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to improve query performance.",
+        question: "Which factor should be optimized first?",
+        answers: [
+            "Sensor efficiency",
+            "Dashboard color scheme",
+            "Server hostname",
+            "Endpoint screen resolution"
+        ],
+        correct: 0,
+        explanation: "Sensor efficiency strongly impacts performance.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 114,
+        domain: "Performance",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Query performance is being analyzed.",
+        question: "Which elements influence query performance?",
+        answers: [
+            "Sensor complexity",
+            "Network latency",
+            "Endpoint count",
+            "Dashboard refresh interval"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Sensors, network conditions, and endpoint volume affect speed.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 115,
+        domain: "Architecture",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A system architect evaluates communication flow.",
+        question: "What allows query responses to travel efficiently back to the server?",
+        answers: [
+            "Peer aggregation",
+            "Direct SQL replication",
+            "Endpoint API polling",
+            "Dashboard caching"
+        ],
+        correct: 0,
+        explanation: "Peer aggregation passes responses through the chain.",
+        tags: ["architecture"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+    {
+        id: 116,
+        domain: "Architecture",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Chain communication review.",
+        question: "Endpoints in Tanium chains help relay queries and responses.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Each endpoint helps propagate queries through the chain.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 117,
+        domain: "Architecture",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Architecture design review.",
+        question: "Which characteristics define Tanium’s distributed architecture?",
+        answers: [
+            "Peer communication",
+            "Distributed processing",
+            "Local execution of sensors",
+            "Centralized vulnerability scanning"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Peer communication and distributed execution define Tanium.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 118,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A team wants to discover unmanaged assets.",
+        question: "Which module identifies devices not currently managed by Tanium?",
+        answers: [
+            "Discover",
+            "Deploy",
+            "Reveal",
+            "Connect"
+        ],
+        correct: 0,
+        explanation: "Discover identifies unmanaged network assets.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 119,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Module functionality.",
+        question: "The Deploy module distributes software packages to endpoints.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Deploy is used for software distribution.",
+        tags: ["modules"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+    {
+        id: 120,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Endpoint lifecycle management.",
+        question: "Which modules are commonly used to manage endpoint updates and compliance?",
+        answers: [
+            "Patch",
+            "Comply",
+            "Deploy",
+            "Connect"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Patch, Comply, and Deploy manage updates and compliance.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 121,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An operator needs to retrieve the hostname of all endpoints.",
+        question: "Which question should be asked in Interact?",
+        answers: [
+            "Get Computer Name from all machines",
+            "Get Installed Applications",
+            "Get Running Processes",
+            "Get Logged In User"
+        ],
+        correct: 0,
+        explanation: "The Computer Name sensor retrieves the hostname of endpoints.",
+        tags: ["interact", "queries", "sensors"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 122,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A security analyst wants to identify endpoints running Google Chrome.",
+        question: "Which Interact question should be used?",
+        answers: [
+            "Get Installed Applications contains Google Chrome",
+            "Get Chrome Service Status",
+            "Get Chrome Process Only",
+            "Get Browser Usage History"
+        ],
+        correct: 0,
+        explanation: "Installed Applications returns software installed on endpoints including Chrome.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 123,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "An operator is reviewing query behavior.",
+        question: "Questions asked in Interact return results in near real time from endpoints.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Tanium queries provide near real-time results through the peer-to-peer architecture.",
+        tags: ["interact", "queries"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 124,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An administrator needs information about endpoint operating systems.",
+        question: "Which sensors could help identify operating system information?",
+        answers: [
+            "Operating System",
+            "OS Platform",
+            "Computer Name",
+            "Installed Applications"
+        ],
+        correct: [0, 1],
+        explanation: "Operating System and OS Platform sensors provide OS details.",
+        tags: ["interact", "sensors"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 125,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A team needs to retrieve the currently logged in user from endpoints.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Logged In User",
+            "Computer Name",
+            "Operating System",
+            "Local Administrators"
+        ],
+        correct: 0,
+        explanation: "The Logged In User sensor retrieves the current user session information.",
+        tags: ["interact", "users"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 126,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator needs to know which endpoints are currently online.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Online",
+            "Computer Name",
+            "Last Logged In User",
+            "Operating System"
+        ],
+        correct: 0,
+        explanation: "The Online sensor shows endpoint connectivity status.",
+        tags: ["interact", "endpoint_status"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 127,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "An operator reviews saved questions.",
+        question: "Saved questions can be reused later or integrated into dashboards.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Saved questions improve reuse and reporting integration.",
+        tags: ["interact", "saved_questions"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 128,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An operator wants to refine query results.",
+        question: "Which methods can be used to refine questions in Interact?",
+        answers: [
+            "Apply sensor filters",
+            "Use computer groups",
+            "Limit endpoints by operating system",
+            "Restart the Tanium server"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Filters and groups refine query targeting.",
+        tags: ["interact", "filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 129,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A security analyst wants to identify endpoints where a specific file exists.",
+        question: "Which sensor should be used?",
+        answers: [
+            "File Exists",
+            "Installed Applications",
+            "Running Processes",
+            "File Permissions"
+        ],
+        correct: 0,
+        explanation: "The File Exists sensor checks whether a specific file path exists.",
+        tags: ["interact", "files"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 130,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator needs to identify endpoints where Chrome is running as a process.",
+        question: "Which question should be used?",
+        answers: [
+            "Get Running Processes contains chrome.exe",
+            "Get Installed Applications contains Chrome",
+            "Get Chrome Version",
+            "Get Browser History"
+        ],
+        correct: 0,
+        explanation: "Running Processes identifies active processes such as chrome.exe.",
+        tags: ["interact", "processes"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 131,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An operator needs to retrieve the operating system of all endpoints.",
+        question: "Which sensor should be used in Interact?",
+        answers: [
+            "Operating System",
+            "Computer Name",
+            "Logged In User",
+            "IP Address"
+        ],
+        correct: 0,
+        explanation: "The Operating System sensor returns OS information from endpoints.",
+        tags: ["interact", "sensors"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 132,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Query results behavior review.",
+        question: "Interact queries continue to collect responses as endpoints respond over time.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Results stream back as endpoints respond through the peer chain.",
+        tags: ["interact", "queries"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 133,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An operator wants to retrieve system identity information.",
+        question: "Which sensors help identify endpoints?",
+        answers: [
+            "Computer Name",
+            "IP Address",
+            "Serial Number",
+            "Browser History"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Identity sensors include hostname, IP address, and hardware identifiers.",
+        tags: ["interact", "inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 134,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A security analyst wants to identify endpoints where PowerShell is currently running.",
+        question: "Which Interact query should be used?",
+        answers: [
+            "Get Running Processes contains powershell.exe",
+            "Get Installed Applications contains PowerShell",
+            "Get PowerShell Version",
+            "Get Windows Features"
+        ],
+        correct: 0,
+        explanation: "Running Processes identifies active processes such as powershell.exe.",
+        tags: ["interact", "processes"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 135,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to know which endpoints have Java installed.",
+        question: "Which query should be asked?",
+        answers: [
+            "Get Installed Applications contains Java",
+            "Get Running Processes contains java.exe",
+            "Get Java Service Status",
+            "Get File Exists java.exe"
+        ],
+        correct: 0,
+        explanation: "Installed Applications returns installed software including Java.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 136,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Filtering query results.",
+        question: "Sensor filters can be used to narrow the results returned by a query.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Filters refine queries by restricting returned results.",
+        tags: ["interact", "filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 137,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An administrator wants to filter queries to Windows endpoints.",
+        question: "Which filters could help identify Windows machines?",
+        answers: [
+            "Operating System contains Windows",
+            "Is Windows equals true",
+            "OS Platform equals Windows",
+            "Computer Name contains win"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Operating System, Is Windows, and OS Platform can filter Windows endpoints.",
+        tags: ["interact", "filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 138,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst wants to retrieve the version of Google Chrome installed on endpoints.",
+        question: "Which question should be used?",
+        answers: [
+            "Get Installed Application Version[Google Chrome]",
+            "Get Running Processes contains chrome.exe",
+            "Get Browser History",
+            "Get Chrome Service Status"
+        ],
+        correct: 0,
+        explanation: "Installed Application Version retrieves the version of installed software.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 139,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator needs to identify endpoints that have not responded to queries.",
+        question: "Which sensor can indicate endpoint availability?",
+        answers: [
+            "Online",
+            "Computer Name",
+            "Operating System",
+            "Logged In User"
+        ],
+        correct: 0,
+        explanation: "The Online sensor shows whether endpoints are connected.",
+        tags: ["interact", "endpoint_status"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 140,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Understanding query scope.",
+        question: "Queries in Interact can be limited to specific computer groups.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Computer groups define which endpoints receive the query.",
+        tags: ["interact", "groups"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 141,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An operator wants to gather user session information.",
+        question: "Which sensors provide user login details?",
+        answers: [
+            "Logged In User",
+            "Last Logged In User",
+            "Active Directory User",
+            "Computer Name"
+        ],
+        correct: [0, 1],
+        explanation: "Logged In User and Last Logged In User provide session information.",
+        tags: ["interact", "users"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 142,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A security team investigates malware that creates a suspicious file.",
+        question: "Which query should be used to locate the file across endpoints?",
+        answers: [
+            "Get File Exists[C:\\Temp\\malware.exe]",
+            "Get Installed Applications contains malware",
+            "Get Running Processes contains malware.exe",
+            "Get Antivirus Version"
+        ],
+        correct: 0,
+        explanation: "File Exists checks if a specific file path exists.",
+        tags: ["interact", "files", "security"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 143,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to retrieve endpoint IP addresses.",
+        question: "Which sensor should be used?",
+        answers: [
+            "IP Address",
+            "Computer Name",
+            "Operating System",
+            "Network Domain"
+        ],
+        correct: 0,
+        explanation: "The IP Address sensor returns endpoint IP information.",
+        tags: ["interact", "network"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 144,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Sensor usage review.",
+        question: "Sensors execute locally on endpoints to gather information.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Sensors run locally on endpoints to collect data.",
+        tags: ["interact", "sensors"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 145,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An analyst needs system hardware information.",
+        question: "Which sensors could provide hardware details?",
+        answers: [
+            "Serial Number",
+            "Manufacturer",
+            "Model",
+            "Installed Applications"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Serial Number, Manufacturer, and Model provide hardware information.",
+        tags: ["interact", "hardware"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 146,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to know which endpoints have Microsoft Office installed.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Installed Applications contains Microsoft Office",
+            "Get Running Processes contains office.exe",
+            "Get Word Version",
+            "Get Office Services"
+        ],
+        correct: 0,
+        explanation: "Installed Applications identifies installed software including Office.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 147,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst wants to check if a specific service is running.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Services",
+            "Installed Applications",
+            "Running Processes",
+            "Operating System"
+        ],
+        correct: 0,
+        explanation: "The Services sensor returns service status information.",
+        tags: ["interact", "services"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 148,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Query results understanding.",
+        question: "Query results may be partial if some endpoints have not responded yet.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Endpoints respond asynchronously through the peer chain.",
+        tags: ["interact", "queries"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 149,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An administrator refines query results.",
+        question: "Which elements can refine Interact queries?",
+        answers: [
+            "Sensor filters",
+            "Computer groups",
+            "Operating system filters",
+            "Server database queries"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Filters and groups refine the scope of Interact queries.",
+        tags: ["interact", "filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 150,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A threat hunter wants to identify endpoints running suspicious scripts.",
+        question: "Which query helps detect running scripts?",
+        answers: [
+            "Get Running Processes contains wscript.exe",
+            "Get Installed Applications contains script",
+            "Get File Exists script.ps1",
+            "Get Operating System"
+        ],
+        correct: 0,
+        explanation: "Running Processes identifies active scripts executed through wscript.",
+        tags: ["interact", "security", "processes"],
+        examWeight: 3,
+        shuffleAnswers: true
     }
 
 ]
