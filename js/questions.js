@@ -1,15 +1,15 @@
-//C:\Users\Colaborador\Desktop\joemarvi\treinamentos\certifications\tanium\simulations\js\questions.js
 export const questionBank = [
+
     {
         id: 1,
         domain: "Architecture",
         type: "true_false",
         difficulty: "easy",
-        scenario: "Understanding Tanium’s architecture.",
-        question: "Tanium uses a peer-to-peer linear chain architecture for endpoint communication.",
+        scenario: "Understanding Tanium communication.",
+        question: "Tanium endpoints communicate using a peer-to-peer chain architecture.",
         answers: ["True", "False"],
         correct: 0,
-        explanation: "Tanium endpoints form peer-to-peer chains to distribute queries and responses efficiently.",
+        explanation: "Endpoints form peer-to-peer chains to distribute queries and responses efficiently.",
         tags: ["architecture", "p2p"],
         examWeight: 1,
         shuffleAnswers: true
@@ -18,624 +18,594 @@ export const questionBank = [
     {
         id: 2,
         domain: "Architecture",
-        type: "multi_select",
+        type: "single_choice",
         difficulty: "medium",
-        scenario: "A company wants to reduce network load during large queries.",
-        question: "Which Tanium architectural features reduce network traffic?",
+        scenario: "A network team wants to know how Tanium scales across thousands of endpoints.",
+        question: "Which component coordinates endpoint communication and query distribution?",
         answers: [
-            "Peer-to-peer chains",
-            "Aggregated responses",
-            "Direct polling from Core Server",
-            "Sensor filtering"
+            "Tanium Core Server",
+            "Tanium Endpoint Sensor",
+            "Tanium Client Chain",
+            "Tanium Connect Module"
         ],
-        correct: [0, 1, 3],
-        explanation: "Peer chains, aggregation, and filtering minimize network traffic.",
-        tags: ["architecture", "scale"],
+        correct: 0,
+        explanation: "The Tanium Core Server coordinates query distribution and data aggregation.",
+        tags: ["architecture"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 3,
-        domain: "Sensors",
+        domain: "Architecture",
         type: "multi_select",
-        difficulty: "easy",
-        scenario: "Admin needs hardware inventory.",
-        question: "Which sensors provide hardware information?",
+        difficulty: "medium",
+        scenario: "A company wants to minimize network traffic during endpoint queries.",
+        question: "Which Tanium features help reduce network load?",
         answers: [
-            "CPU Info Sensor",
-            "Memory Info Sensor",
-            "Disk Space Sensor",
-            "User Login Sensor"
+            "Peer-to-peer communication",
+            "Aggregated responses",
+            "Direct server polling",
+            "Sensor filtering"
         ],
-        correct: [0, 1, 2],
-        explanation: "CPU, Memory, and Disk sensors provide hardware inventory data.",
-        tags: ["sensors", "inventory"],
+        correct: [0, 1, 3],
+        explanation: "Peer chains, aggregated responses, and filtering reduce traffic.",
+        tags: ["architecture", "performance"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 4,
-        domain: "Sensors",
-        type: "true_false",
+        domain: "Architecture",
+        type: "single_choice",
         difficulty: "easy",
-        scenario: "Querying endpoint data.",
-        question: "Sensors execute locally on each endpoint to gather data.",
-        answers: ["True", "False"],
-        correct: 0,
-        explanation: "Sensors run on endpoints and return results to Tanium.",
-        tags: ["sensors", "endpoint"],
+        scenario: "An administrator studies Tanium sensors.",
+        question: "Where do Tanium sensors execute?",
+        answers: [
+            "On the Tanium Server",
+            "On endpoints",
+            "In the Tanium database",
+            "On network switches"
+        ],
+        correct: 1,
+        explanation: "Sensors execute locally on endpoints.",
+        tags: ["sensors"],
         examWeight: 1,
         shuffleAnswers: true
     },
 
     {
         id: 5,
-        domain: "Actions",
-        type: "multi_select",
+        domain: "Architecture",
+        type: "true_false",
         difficulty: "medium",
-        scenario: "A patch must be deployed automatically.",
-        question: "Which features help automate deployment?",
-        answers: [
-            "Scheduled actions",
-            "Pre-deployment testing",
-            "Action expiration",
-            "Manual user prompts"
-        ],
-        correct: [0, 1, 2],
-        explanation: "Scheduling, testing, and expiration enable automation.",
-        tags: ["actions", "automation"],
+        scenario: "Understanding query response time.",
+        question: "Tanium can return data from thousands of endpoints within seconds.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Tanium's architecture allows near real-time visibility.",
+        tags: ["architecture"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 6,
-        domain: "Deploy",
-        type: "multi_select",
-        difficulty: "medium",
-        scenario: "Deploying Tanium Client to many machines.",
-        question: "Which methods can deploy the Tanium Client?",
+        domain: "Asking Questions",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An operator wants to see endpoint hostnames.",
+        question: "Which sensor provides the hostname of an endpoint?",
         answers: [
-            "GPO deployment",
-            "Manual installation",
-            "Deployment tool",
-            "Endpoint sensor execution"
+            "Computer Name",
+            "Network Adapter",
+            "Logged In User",
+            "Operating System"
         ],
-        correct: [0, 1, 2],
-        explanation: "GPO, deployment tools, and manual installs are supported.",
-        tags: ["deploy", "client"],
-        examWeight: 2,
+        correct: 0,
+        explanation: "Computer Name sensor retrieves the hostname.",
+        tags: ["interact"],
+        examWeight: 1,
         shuffleAnswers: true
     },
 
     {
         id: 7,
-        domain: "Architecture",
+        domain: "Asking Questions",
         type: "multi_select",
         difficulty: "medium",
-        scenario: "A large enterprise requires high availability.",
-        question: "Which architecture components support high availability?",
+        scenario: "A security team is gathering endpoint inventory data.",
+        question: "Which sensors are commonly used for asset inventory?",
         answers: [
-            "Multiple Core Servers",
-            "Load balancer",
-            "Single server mode",
-            "Database replication"
+            "Operating System",
+            "Installed Applications",
+            "IP Address",
+            "CPU Usage"
         ],
-        correct: [0, 1, 3],
-        explanation: "HA requires clustering and load balancing.",
-        tags: ["architecture", "ha"],
+        correct: [0, 1, 2],
+        explanation: "OS, applications, and IP address help identify assets.",
+        tags: ["inventory"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 8,
-        domain: "Sensors",
-        type: "multi_select",
-        difficulty: "medium",
-        scenario: "Security team needs to monitor running software.",
-        question: "Which sensors provide process information?",
-        answers: [
-            "Running Processes Sensor",
-            "Installed Applications Sensor",
-            "CPU Info Sensor",
-            "Service Status Sensor"
-        ],
-        correct: [0, 3],
-        explanation: "Running Processes and Service Status sensors provide runtime service/process data.",
-        tags: ["sensors", "process"],
-        examWeight: 2,
+        domain: "Asking Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "An analyst is running queries in Interact.",
+        question: "Questions in Tanium retrieve data from endpoints using sensors.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Sensors gather endpoint data when a question is asked.",
+        tags: ["interact"],
+        examWeight: 1,
         shuffleAnswers: true
     },
 
     {
         id: 9,
-        domain: "Take Action",
-        type: "multi_select",
+        domain: "Asking Questions",
+        type: "single_choice",
         difficulty: "medium",
-        scenario: "A vulnerability scan identified outdated software.",
-        question: "What steps help remediate endpoints?",
+        scenario: "A user wants to know which endpoints are online.",
+        question: "Which sensor should be used?",
         answers: [
-            "Deploy patch package",
-            "Verify with sensor",
-            "Notify users manually",
-            "Repeat deployment until compliant"
+            "Online",
+            "Machine Status",
+            "Connection Status",
+            "Endpoint Active"
         ],
-        correct: [0, 1, 3],
-        explanation: "Deploy, verify, and repeat until compliant.",
-        tags: ["patch", "remediation"],
+        correct: 0,
+        explanation: "The Online sensor identifies active endpoints.",
+        tags: ["status"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 10,
-        domain: "Sensors",
-        type: "single",
+        domain: "Refining Questions",
+        type: "single_choice",
         difficulty: "easy",
-        scenario: "Admin wants OS information.",
-        question: "Which sensor retrieves operating system details?",
+        scenario: "An admin wants to limit results to Windows machines.",
+        question: "Which filter can be used?",
         answers: [
-            "Operating System Sensor",
-            "CPU Sensor",
-            "Disk Sensor",
-            "User Sensor"
+            "Is Windows equals true",
+            "Operating System equals Linux",
+            "Device Type equals Server",
+            "Hostname contains WIN"
         ],
         correct: 0,
-        explanation: "The Operating System sensor returns OS details.",
-        tags: ["sensors", "os"],
+        explanation: "The Is Windows sensor filters Windows endpoints.",
+        tags: ["filters"],
         examWeight: 1,
         shuffleAnswers: true
     },
 
     {
         id: 11,
-        domain: "Actions",
-        type: "single",
+        domain: "Refining Questions",
+        type: "multi_select",
         difficulty: "medium",
-        scenario: "Admin wants to prevent outdated actions from running.",
-        question: "Which feature stops actions after a time period?",
+        scenario: "An administrator is refining query results.",
+        question: "Which techniques refine Tanium question results?",
         answers: [
-            "Action expiration",
-            "Sensor filtering",
-            "Chain timeout",
-            "Endpoint reboot"
+            "Sensor filters",
+            "Computer groups",
+            "Server logs",
+            "Question parameters"
         ],
-        correct: 0,
-        explanation: "Action expiration prevents old actions from executing.",
-        tags: ["actions", "control"],
+        correct: [0, 1, 3],
+        explanation: "Filters, groups, and parameters refine query results.",
+        tags: ["filters"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 12,
-        domain: "Security",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Restricting access to Tanium modules.",
-        question: "Which feature manages user permissions?",
-        answers: [
-            "RBAC",
-            "Peer chains",
-            "Sensor scripts",
-            "Endpoint isolation"
-        ],
-        correct: 0,
-        explanation: "Role-Based Access Control manages permissions.",
-        tags: ["security", "rbac"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 13,
-        domain: "Interact",
-        type: "single",
+        domain: "Refining Questions",
+        type: "true_false",
         difficulty: "easy",
-        scenario: "Admin runs a query in Interact.",
-        question: "What does Interact primarily do?",
-        answers: [
-            "Query endpoints in real time",
-            "Deploy patches",
-            "Install clients",
-            "Create dashboards"
-        ],
+        scenario: "An operator is reviewing computer groups.",
+        question: "Dynamic computer groups update automatically based on defined criteria.",
+        answers: ["True", "False"],
         correct: 0,
-        explanation: "Interact is used to run real-time endpoint queries.",
-        tags: ["interact", "query"],
+        explanation: "Dynamic groups automatically update membership.",
+        tags: ["groups"],
         examWeight: 1,
         shuffleAnswers: true
     },
 
     {
-        id: 14,
-        domain: "Deploy",
-        type: "multi_select",
+        id: 13,
+        domain: "Refining Questions",
+        type: "single_choice",
         difficulty: "medium",
-        scenario: "Endpoints in remote offices must install Tanium.",
-        question: "Which deployment strategy improves success?",
+        scenario: "A new endpoint must be added to a manual group.",
+        question: "What should the administrator do?",
         answers: [
-            "Peer relay distribution",
-            "Multiple deployment windows",
-            "Manual installation",
-            "Ignore remote endpoints"
+            "Edit the group membership",
+            "Restart the Tanium server",
+            "Create a new question",
+            "Modify endpoint sensors"
         ],
-        correct: [0, 1, 2],
-        explanation: "Relays and staged deployments improve reliability.",
-        tags: ["deploy", "remote"],
+        correct: 0,
+        explanation: "Manual groups require manual editing.",
+        tags: ["groups"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
-        id: 15,
-        domain: "Threat Response",
-        type: "multi_select",
-        difficulty: "medium",
-        scenario: "Investigating suspicious processes.",
-        question: "Which capability helps identify malicious activity?",
+        id: 14,
+        domain: "Taking Action",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An operator wants to deploy a script to endpoints.",
+        question: "What feature allows running scripts on endpoints?",
         answers: [
-            "Endpoint process data",
-            "File hash detection",
-            "Sensor queries",
-            "Printer monitoring"
+            "Tanium Actions",
+            "Sensor Queries",
+            "Computer Groups",
+            "Saved Questions"
         ],
-        correct: [0, 1, 2],
-        explanation: "Threat Response investigations rely on process, hash, and sensor data.",
-        tags: ["security", "threat-response"],
+        correct: 0,
+        explanation: "Actions execute commands on endpoints.",
+        tags: ["actions"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 15,
+        domain: "Taking Action",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Understanding endpoint actions.",
+        question: "Actions in Tanium can be scheduled to run later.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Actions support scheduling.",
+        tags: ["actions"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 16,
-        domain: "Actions",
-        type: "true_false",
-        difficulty: "easy",
-        scenario: "Running scripts across endpoints.",
-        question: "Actions allow administrators to execute scripts remotely.",
-        answers: ["True", "False"],
-        correct: 0,
-        explanation: "Actions can execute commands or scripts across endpoints.",
-        tags: ["actions", "automation"],
-        examWeight: 1,
+        domain: "Taking Action",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An admin is configuring a scheduled action.",
+        question: "Which options can be configured for an action?",
+        answers: [
+            "Start time",
+            "Target group",
+            "Distribution time",
+            "Endpoint CPU priority"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Actions support scheduling, targeting, and distribution.",
+        tags: ["actions"],
+        examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 17,
-        domain: "Sensors",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Finding installed applications.",
-        question: "Which sensor returns installed software?",
-        answers: [
-            "Installed Applications Sensor",
-            "Running Processes Sensor",
-            "CPU Sensor",
-            "Disk Sensor"
-        ],
-        correct: 0,
-        explanation: "Installed Applications sensor returns software inventory.",
-        tags: ["software", "inventory"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 18,
-        domain: "Sensors",
-        type: "single",
+        domain: "Modules",
+        type: "single_choice",
         difficulty: "easy",
-        scenario: "Checking user login status.",
-        question: "Which sensor retrieves currently logged-in users?",
+        scenario: "A team wants to integrate Tanium with external tools.",
+        question: "Which module sends Tanium data to external systems?",
         answers: [
-            "Logged-in User Sensor",
-            "CPU Sensor",
-            "Disk Sensor",
-            "Network Adapter Sensor"
+            "Connect",
+            "Interact",
+            "Deploy",
+            "Discover"
         ],
         correct: 0,
-        explanation: "Logged-in User sensor identifies active users.",
-        tags: ["user", "sensors"],
+        explanation: "Connect exports Tanium data.",
+        tags: ["modules"],
         examWeight: 1,
         shuffleAnswers: true
     },
 
     {
-        id: 19,
-        domain: "Actions",
-        type: "multi_select",
+        id: 18,
+        domain: "Modules",
+        type: "single_choice",
         difficulty: "medium",
-        scenario: "Prevent accidental action execution.",
-        question: "Which mechanism allows validation before large deployments?",
+        scenario: "A security team wants vulnerability assessments.",
+        question: "Which module provides vulnerability scanning?",
         answers: [
-            "Pre-deployment testing",
-            "Action approval workflow",
-            "Sensor caching",
-            "Endpoint reboot"
+            "Comply",
+            "Deploy",
+            "Patch",
+            "Reveal"
         ],
-        correct: [0, 1],
-        explanation: "Testing and approval workflows help prevent accidental deployments.",
-        tags: ["actions", "governance"],
+        correct: 0,
+        explanation: "Comply provides vulnerability management.",
+        tags: ["modules"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
+        id: 19,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Understanding Tanium Deploy.",
+        question: "The Deploy module is used for distributing software packages.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Deploy distributes software across endpoints.",
+        tags: ["deploy"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
         id: 20,
-        domain: "Security",
+        domain: "Modules",
         type: "multi_select",
         difficulty: "medium",
-        scenario: "Limiting administrator privileges.",
-        question: "Which RBAC capabilities exist in Tanium?",
+        scenario: "An organization uses multiple Tanium modules.",
+        question: "Which modules are related to endpoint management?",
         answers: [
-            "Role assignment",
-            "Permission scopes",
-            "User grouping",
-            "Endpoint shutdown control"
+            "Deploy",
+            "Patch",
+            "Comply",
+            "Connect"
         ],
         correct: [0, 1, 2],
-        explanation: "RBAC controls roles, permissions, and user group assignments.",
-        tags: ["security", "rbac"],
+        explanation: "Deploy, Patch, and Comply manage endpoints.",
+        tags: ["modules"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 21,
-        domain: "Deploy",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Deploying Tanium to new region.",
-        question: "What reduces deployment bandwidth usage?",
+        domain: "Reporting",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An analyst exports query results.",
+        question: "Which format is commonly used to export data to spreadsheets?",
         answers: [
-            "Peer relay installation",
-            "Deployment scheduling",
-            "Manual USB installation",
-            "Broadcast install scripts"
+            "CSV",
+            "XML",
+            "JSON-RPC",
+            "SQL"
         ],
         correct: 0,
-        explanation: "Relays and staged scheduling reduce network usage.",
-        tags: ["deploy", "bandwidth"],
-        examWeight: 2,
+        explanation: "CSV works easily with spreadsheets.",
+        tags: ["reporting"],
+        examWeight: 1,
         shuffleAnswers: true
     },
 
     {
         id: 22,
-        domain: "Patch",
-        type: "multi_select",
+        domain: "Reporting",
+        type: "true_false",
         difficulty: "medium",
-        scenario: "Patch compliance reporting.",
-        question: "Which components help verify patch compliance?",
-        answers: [
-            "Patch sensors",
-            "Endpoint queries",
-            "Action verification",
-            "Printer drivers"
-        ],
-        correct: [0, 1, 2],
-        explanation: "Sensors and queries verify patch installation status.",
-        tags: ["patch", "compliance"],
+        scenario: "Understanding reporting.",
+        question: "Saved questions allow administrators to reuse common queries.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Saved questions store commonly used queries.",
+        tags: ["reporting"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 23,
-        domain: "Threat Response",
+        domain: "Reporting",
         type: "multi_select",
         difficulty: "medium",
-        scenario: "Investigating malware.",
-        question: "Which data types help detect malware?",
+        scenario: "A team uses Tanium dashboards.",
+        question: "What can dashboards display?",
         answers: [
-            "File hashes",
-            "Running processes",
-            "Network connections",
-            "Mouse movement"
+            "Saved question results",
+            "Charts",
+            "Endpoint metrics",
+            "Database logs"
         ],
         correct: [0, 1, 2],
-        explanation: "Threat hunting relies on system artifacts like processes and network connections.",
-        tags: ["security", "forensics"],
+        explanation: "Dashboards display query results and visualizations.",
+        tags: ["dashboards"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 24,
-        domain: "Sensors",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Monitoring disk usage.",
-        question: "Which sensors report storage utilization?",
-        answers: [
-            "Disk Space Sensor",
-            "File Count Sensor",
-            "CPU Sensor",
-            "Network Sensor"
-        ],
-        correct: 0,
-        explanation: "Disk and file sensors measure storage utilization.",
-        tags: ["storage", "sensors"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 25,
-        domain: "Actions",
+        domain: "Security",
         type: "true_false",
         difficulty: "easy",
-        scenario: "Action execution.",
-        question: "Actions can target only a subset of endpoints using filters.",
+        scenario: "Understanding access control.",
+        question: "Role-Based Access Control (RBAC) restricts user permissions in Tanium.",
         answers: ["True", "False"],
         correct: 0,
-        explanation: "Actions can be scoped using sensor-based targeting filters.",
-        tags: ["actions", "targeting"],
+        explanation: "RBAC defines permissions based on roles.",
+        tags: ["security"],
         examWeight: 1,
         shuffleAnswers: true
     },
 
     {
+        id: 25,
+        domain: "Security",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to limit user permissions.",
+        question: "Which mechanism controls user privileges?",
+        answers: [
+            "RBAC",
+            "Endpoint Sensors",
+            "Saved Questions",
+            "Peer Chains"
+        ],
+        correct: 0,
+        explanation: "RBAC manages user privileges.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
         id: 26,
-        domain: "Deploy",
+        domain: "Security",
         type: "multi_select",
         difficulty: "medium",
-        scenario: "Installing Tanium in restricted networks.",
-        question: "Which deployment methods work in restricted network environments?",
+        scenario: "Security policies are being reviewed.",
+        question: "Which elements improve Tanium security?",
         answers: [
-            "VPN-based installation",
-            "Manual installation",
-            "Peer relay distribution",
-            "Disable firewall"
+            "RBAC",
+            "Audit logs",
+            "Encryption",
+            "Endpoint sensors"
         ],
         correct: [0, 1, 2],
-        explanation: "VPN access, manual installs, and relay distribution allow deployment in restricted environments.",
-        tags: ["deploy", "firewall"],
+        explanation: "RBAC, auditing, and encryption strengthen security.",
+        tags: ["security"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 27,
-        domain: "Security",
-        type: "multi_select",
-        difficulty: "medium",
-        scenario: "Protecting administrative access.",
-        question: "Which controls improve the security of Tanium servers?",
-        answers: [
-            "RBAC",
-            "Network segmentation",
-            "Multi-factor authentication",
-            "Printer monitoring"
-        ],
-        correct: [0, 1, 2],
-        explanation: "Access control, segmentation, and MFA strengthen server security.",
-        tags: ["security", "server"],
-        examWeight: 2,
+        domain: "Performance",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Performance testing.",
+        question: "Peer-to-peer chains help Tanium scale to large environments.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Peer chains reduce load on the central server.",
+        tags: ["performance"],
+        examWeight: 1,
         shuffleAnswers: true
     },
 
     {
         id: 28,
-        domain: "Sensors",
-        type: "single",
+        domain: "Performance",
+        type: "single_choice",
         difficulty: "medium",
-        scenario: "Monitoring network interfaces.",
-        question: "Which sensor detects network adapter status?",
+        scenario: "A query needs faster response time.",
+        question: "What helps reduce response time?",
         answers: [
-            "Network Adapter Sensor",
-            "CPU Sensor",
-            "Disk Sensor",
-            "Memory Sensor"
+            "Efficient sensors",
+            "Larger SQL servers",
+            "More dashboards",
+            "Manual groups"
         ],
         correct: 0,
-        explanation: "Network Adapter sensors report network interface configuration and status.",
-        tags: ["network", "sensors"],
+        explanation: "Efficient sensors improve query performance.",
+        tags: ["performance"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 29,
-        domain: "Actions",
+        domain: "Performance",
         type: "multi_select",
         difficulty: "medium",
-        scenario: "Updating antivirus signatures.",
-        question: "Which steps automate antivirus signature updates across endpoints?",
+        scenario: "Performance tuning is being reviewed.",
+        question: "Which factors affect Tanium query performance?",
         answers: [
-            "Deploy AV update package",
-            "Verify update status using sensors",
-            "Schedule recurring actions",
-            "Ask users to update manually"
+            "Sensor complexity",
+            "Number of endpoints",
+            "Network latency",
+            "Dashboard colors"
         ],
         correct: [0, 1, 2],
-        explanation: "Automated updates require deployment, verification, and scheduling.",
-        tags: ["security", "actions"],
+        explanation: "Sensors, endpoint count, and network latency impact performance.",
+        tags: ["performance"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 30,
-        domain: "Sensors",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Administrators want to monitor endpoint uptime.",
-        question: "Which sensor provides system uptime information?",
+        domain: "Architecture",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A network engineer reviews endpoint communication.",
+        question: "What ensures queries propagate through endpoint chains?",
         answers: [
-            "System Uptime Sensor",
-            "CPU Usage Sensor",
-            "Network Adapter Sensor",
-            "Disk Usage Sensor"
+            "Tanium Client",
+            "Database Replication",
+            "Endpoint API",
+            "SQL Queries"
         ],
         correct: 0,
-        explanation: "System Uptime sensor reports how long the endpoint has been running.",
-        tags: ["sensors", "uptime"],
-        examWeight: 2,
+        explanation: "The Tanium Client forwards queries across the chain.",
+        tags: ["architecture"],
+        examWeight: 3,
         shuffleAnswers: true
     },
 
     {
         id: 31,
-        domain: "Actions",
-        type: "single",
+        domain: "Architecture",
+        type: "true_false",
         difficulty: "medium",
-        scenario: "A configuration script must run across 10,000 endpoints safely.",
-        question: "Which safeguard should be applied before large-scale action deployment?",
-        answers: [
-            "Pre-deployment testing",
-            "Targeted endpoint filtering",
-            "Action expiration",
-            "Disable logging"
-        ],
+        scenario: "Understanding endpoint communication reliability.",
+        question: "If one endpoint in a Tanium peer chain becomes unavailable, the chain can automatically reroute communication.",
+        answers: ["True", "False"],
         correct: 0,
-        explanation: "Testing, filtering, and expiration help safely control large deployments.",
-        tags: ["actions", "deployment", "safety"],
+        explanation: "Tanium can dynamically rebuild chains if endpoints become unavailable.",
+        tags: ["architecture", "resilience"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 32,
-        domain: "Threat Response",
-        type: "single",
+        domain: "Architecture",
+        type: "single_choice",
         difficulty: "medium",
-        scenario: "Investigating suspicious files.",
-        question: "Which data helps identify malicious files during an investigation?",
+        scenario: "A network engineer analyzes Tanium data flow.",
+        question: "What mechanism allows endpoints to share query responses efficiently?",
         answers: [
-            "File hash values",
-            "Digital signatures",
-            "File path information",
-            "Printer queue logs"
+            "Peer aggregation",
+            "Direct database queries",
+            "Centralized polling",
+            "Broadcast scanning"
         ],
         correct: 0,
-        explanation: "Hashes, digital signatures, and file locations help identify malicious files.",
-        tags: ["security", "forensics"],
+        explanation: "Endpoints aggregate responses as data flows up the chain.",
+        tags: ["architecture"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 33,
-        domain: "Sensors",
-        type: "single",
+        domain: "Architecture",
+        type: "multi_select",
         difficulty: "medium",
-        scenario: "An administrator wants to track active network connections.",
-        question: "Which sensor retrieves active network connections?",
+        scenario: "A company is evaluating Tanium scalability.",
+        question: "Which factors contribute to Tanium scalability?",
         answers: [
-            "Network Connections Sensor",
-            "CPU Sensor",
-            "Disk Sensor",
-            "User Login Sensor"
+            "Peer-to-peer communication",
+            "Distributed query processing",
+            "Local sensor execution",
+            "Manual endpoint polling"
         ],
-        correct: 0,
-        explanation: "Network Connections sensors report active endpoint connections.",
-        tags: ["sensors", "network"],
+        correct: [0, 1, 2],
+        explanation: "Peer communication, distributed processing, and local sensors enable scalability.",
+        tags: ["architecture", "scale"],
         examWeight: 2,
         shuffleAnswers: true
     },
@@ -643,255 +613,1596 @@ export const questionBank = [
     {
         id: 34,
         domain: "Sensors",
-        type: "multi_select",
-        difficulty: "medium",
-        scenario: "Checking endpoint security posture.",
-        question: "Which sensors help assess endpoint security posture?",
-        answers: [
-            "Antivirus Status Sensor",
-            "Installed Patches Sensor",
-            "Running Processes Sensor",
-            "Mouse Activity Sensor"
-        ],
-        correct: [0, 1, 2],
-        explanation: "AV status, patch levels, and running processes provide security insight.",
-        tags: ["security", "sensors"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 35,
-        domain: "Architecture",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Improving endpoint query performance.",
-        question: "Which factor can affect Tanium query performance the most?",
-        answers: [
-            "Network latency",
-            "Endpoint processing power",
-            "Peer chain length",
-            "Printer driver versions"
-        ],
-        correct: 0,
-        explanation: "Network latency, endpoint resources, and chain topology influence query speed.",
-        tags: ["architecture", "performance"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 36,
-        domain: "Threat Response",
-        type: "multi_select",
-        difficulty: "medium",
-        scenario: "Analyzing suspicious endpoint behavior.",
-        question: "Which indicators may signal a compromised endpoint?",
-        answers: [
-            "Unknown running processes",
-            "Unexpected outbound connections",
-            "Unauthorized user logins",
-            "Printer driver updates"
-        ],
-        correct: [0, 1, 2],
-        explanation: "Suspicious processes, network activity, and logins are common compromise indicators.",
-        tags: ["security", "incident-response"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 37,
-        domain: "Sensors",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Tracking system logins.",
-        question: "Which sensor identifies recent login activity on an endpoint?",
-        answers: [
-            "Last Login Sensor",
-            "CPU Sensor",
-            "Disk Sensor",
-            "Network Sensor"
-        ],
-        correct: 0,
-        explanation: "Last Login sensors report recent authentication activity.",
-        tags: ["sensors", "user"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 38,
-        domain: "Security",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Auditing administrative actions.",
-        question: "Which capability records administrative activity within Tanium?",
-        answers: [
-            "Audit logs",
-            "RBAC policies",
-            "Endpoint sensors",
-            "Network printers"
-        ],
-        correct: 0,
-        explanation: "Audit logs record administrative actions performed within the platform.",
-        tags: ["security", "audit"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 39,
-        domain: "Sensors",
-        type: "single",
-        difficulty: "medium",
-        scenario: "Detecting installed services.",
-        question: "Which sensor lists services running on an endpoint?",
-        answers: [
-            "Service Status Sensor",
-            "CPU Sensor",
-            "Disk Sensor",
-            "User Sensor"
-        ],
-        correct: 0,
-        explanation: "Service Status sensors report service configuration and status.",
-        tags: ["sensors", "services"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 40,
-        domain: "Threat Response",
-        type: "multi_select",
-        difficulty: "medium",
-        scenario: "Investigating possible lateral movement.",
-        question: "Which data sources help detect lateral movement between endpoints?",
-        answers: [
-            "Login events",
-            "Network connections",
-            "Running processes",
-            "Screen brightness settings"
-        ],
-        correct: [0, 1, 2],
-        explanation: "Authentication activity, connections, and processes can reveal lateral movement.",
-        tags: ["security", "threat"],
-        examWeight: 2,
-        shuffleAnswers: true
-    },
-
-    {
-        id: 41,
-        domain: "Sensors",
-        type: "true_false",
+        type: "single_choice",
         difficulty: "easy",
-        scenario: "Collecting endpoint data.",
-        question: "Sensors can return multiple data fields from endpoints.",
-        answers: ["True", "False"],
+        scenario: "An operator wants to identify the operating system.",
+        question: "Which sensor returns the OS information?",
+        answers: [
+            "Operating System",
+            "Computer Name",
+            "Network Adapter",
+            "Endpoint Status"
+        ],
         correct: 0,
-        explanation: "Sensors can return multiple values depending on their configuration.",
+        explanation: "The Operating System sensor returns OS information.",
         tags: ["sensors"],
         examWeight: 1,
         shuffleAnswers: true
     },
 
     {
-        id: 42,
-        domain: "Threat Response",
+        id: 35,
+        domain: "Sensors",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Learning about sensor execution.",
+        question: "Sensors gather information directly from endpoints.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Sensors run locally on endpoints to retrieve data.",
+        tags: ["sensors"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 36,
+        domain: "Sensors",
         type: "multi_select",
         difficulty: "medium",
-        scenario: "Containing an infected endpoint.",
-        question: "Which actions help contain malware during an incident response?",
+        scenario: "An administrator wants detailed endpoint information.",
+        question: "Which data types can sensors retrieve?",
         answers: [
-            "Isolate the endpoint from the network",
-            "Terminate malicious processes",
-            "Deploy a security patch",
-            "Restart printer spooler"
+            "Installed software",
+            "Running processes",
+            "Disk usage",
+            "Firewall policies"
         ],
         correct: [0, 1, 2],
-        explanation: "Isolation, process termination, and remediation patches help stop malware spread.",
-        tags: ["security", "incident-response"],
+        explanation: "Sensors commonly collect software, process, and disk information.",
+        tags: ["sensors", "inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 37,
+        domain: "Asking Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A security analyst wants to identify endpoints running a specific process.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Running Processes",
+            "Installed Applications",
+            "Logged In User",
+            "Endpoint Status"
+        ],
+        correct: 0,
+        explanation: "Running Processes lists active processes.",
+        tags: ["interact"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 38,
+        domain: "Asking Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Understanding question types.",
+        question: "Saved questions allow operators to reuse previously defined queries.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Saved questions simplify repeated queries.",
+        tags: ["interact"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 39,
+        domain: "Asking Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team wants better query organization.",
+        question: "Which features improve question management?",
+        answers: [
+            "Saved questions",
+            "Question categories",
+            "Dashboards",
+            "Database indexing"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Saved questions, categories, and dashboards help manage queries.",
+        tags: ["interact"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 40,
+        domain: "Refining Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to narrow results to servers only.",
+        question: "Which filter helps target servers?",
+        answers: [
+            "Machine Type equals Server",
+            "Hostname contains srv",
+            "Operating System equals Windows",
+            "IP Address contains 10"
+        ],
+        correct: 0,
+        explanation: "Machine Type can identify servers.",
+        tags: ["filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 41,
+        domain: "Refining Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Working with computer groups.",
+        question: "Computer groups can be used to limit the scope of a question.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Groups define which endpoints are targeted.",
+        tags: ["groups"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 42,
+        domain: "Refining Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An admin creates a dynamic group.",
+        question: "Which elements define membership in a dynamic group?",
+        answers: [
+            "Sensor results",
+            "Filter conditions",
+            "Manual endpoint selection",
+            "Question criteria"
+        ],
+        correct: [0, 1, 3],
+        explanation: "Dynamic groups rely on sensor results and filters.",
+        tags: ["groups"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 43,
-        domain: "Architecture",
-        type: "single",
-        difficulty: "medium",
-        scenario: "A company manages 50,000 endpoints globally.",
-        question: "Which Tanium design principle enables efficient scaling across large environments?",
+        domain: "Taking Action",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An operator wants to restart a service on endpoints.",
+        question: "What mechanism executes commands on endpoints?",
         answers: [
-            "Linear peer communication",
-            "Centralized endpoint polling",
-            "Direct database queries from endpoints",
-            "Single endpoint response channel"
+            "Tanium Action",
+            "Sensor Query",
+            "Dashboard Task",
+            "Computer Group"
         ],
         correct: 0,
-        explanation: "Tanium’s linear chain architecture allows large-scale endpoint communication with minimal server load.",
-        tags: ["architecture", "scalability"],
-        examWeight: 2,
+        explanation: "Actions execute commands remotely.",
+        tags: ["actions"],
+        examWeight: 1,
         shuffleAnswers: true
     },
 
     {
         id: 44,
-        domain: "Deploy",
-        type: "single",
+        domain: "Taking Action",
+        type: "true_false",
         difficulty: "medium",
-        scenario: "Deploying clients to remote branch offices.",
-        question: "Which Tanium feature reduces WAN bandwidth usage during client deployment?",
-        answers: [
-            "Peer relay distribution",
-            "Direct server download",
-            "Manual installer copy",
-            "Disable compression"
-        ],
+        scenario: "Action scheduling.",
+        question: "Actions can be distributed over time to reduce network load.",
+        answers: ["True", "False"],
         correct: 0,
-        explanation: "Peer relay allows endpoints to distribute installers locally, reducing WAN traffic.",
-        tags: ["deploy", "bandwidth"],
+        explanation: "Distribution spreads execution across endpoints.",
+        tags: ["actions"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 45,
-        domain: "Actions",
-        type: "single",
+        domain: "Taking Action",
+        type: "multi_select",
         difficulty: "medium",
-        scenario: "Deploying a cleanup script.",
-        question: "Which feature allows administrators to schedule when an action executes?",
+        scenario: "An action is being configured.",
+        question: "Which parameters can be configured for actions?",
         answers: [
-            "Scheduled actions",
-            "Sensor queries",
-            "Peer chains",
-            "Endpoint cache"
+            "Target endpoints",
+            "Start time",
+            "Expiration time",
+            "SQL query priority"
         ],
-        correct: 0,
-        explanation: "Scheduled actions allow administrators to define execution timing for scripts or remediation tasks.",
-        tags: ["actions", "automation"],
+        correct: [0, 1, 2],
+        explanation: "Actions define targets, start time, and expiration.",
+        tags: ["actions"],
         examWeight: 2,
         shuffleAnswers: true
     },
 
     {
         id: 46,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "A team wants to detect unmanaged devices.",
+        question: "Which module discovers unmanaged assets?",
+        answers: [
+            "Discover",
+            "Deploy",
+            "Patch",
+            "Reveal"
+        ],
+        correct: 0,
+        explanation: "Discover identifies unmanaged assets.",
+        tags: ["modules"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 47,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Understanding the Patch module.",
+        question: "The Patch module manages operating system patch deployment.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Patch automates OS patch management.",
+        tags: ["patch"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 48,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A company is reviewing security modules.",
+        question: "Which modules contribute to endpoint security?",
+        answers: [
+            "Comply",
+            "Patch",
+            "Reveal",
+            "Deploy"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Comply, Patch, and Reveal enhance security visibility.",
+        tags: ["modules", "security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 49,
+        domain: "Reporting",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An admin wants regular reporting.",
+        question: "Which feature allows scheduled query execution?",
+        answers: [
+            "Saved Question",
+            "Manual Question",
+            "Endpoint Script",
+            "Server Log"
+        ],
+        correct: 0,
+        explanation: "Saved questions can be reused and scheduled.",
+        tags: ["reporting"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 50,
+        domain: "Reporting",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Dashboard review.",
+        question: "Dashboards visualize data collected from Tanium queries.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Dashboards display query data visually.",
+        tags: ["dashboards"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 51,
+        domain: "Reporting",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An analyst exports data to external tools.",
+        question: "Which export formats are commonly used?",
+        answers: [
+            "CSV",
+            "JSON",
+            "XML",
+            "TXT"
+        ],
+        correct: [0, 1, 2],
+        explanation: "CSV, JSON, and XML are common export formats.",
+        tags: ["reporting"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 52,
+        domain: "Security",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A user account needs limited permissions.",
+        question: "Which security model manages access control?",
+        answers: [
+            "RBAC",
+            "Peer Chains",
+            "Sensor Filtering",
+            "Endpoint Policies"
+        ],
+        correct: 0,
+        explanation: "RBAC defines permissions by role.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 53,
+        domain: "Security",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Audit review.",
+        question: "Audit logs track administrative activities in Tanium.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Audit logs track system actions.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 54,
         domain: "Security",
         type: "multi_select",
         difficulty: "medium",
-        scenario: "Hardening Tanium platform access.",
-        question: "Which security controls help protect Tanium infrastructure?",
+        scenario: "A security audit is being performed.",
+        question: "Which practices improve Tanium security?",
         answers: [
-            "RBAC",
-            "TLS encryption",
-            "Network segmentation",
-            "Disable logging"
+            "RBAC implementation",
+            "Audit logging",
+            "Data encryption",
+            "Sensor caching"
         ],
         correct: [0, 1, 2],
-        explanation: "RBAC, encrypted communication, and network segmentation improve platform security.",
-        tags: ["security", "hardening"],
+        explanation: "RBAC, logs, and encryption improve security.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 55,
+        domain: "Performance",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Scaling discussion.",
+        question: "Sensor efficiency affects overall query performance.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Efficient sensors improve response time.",
+        tags: ["performance"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 56,
+        domain: "Performance",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A query takes too long.",
+        question: "What should be optimized first?",
+        answers: [
+            "Sensor design",
+            "Dashboard layout",
+            "Server theme",
+            "Endpoint hostname"
+        ],
+        correct: 0,
+        explanation: "Sensor efficiency is key to query speed.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 57,
+        domain: "Performance",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Investigating slow queries.",
+        question: "Which factors can slow Tanium queries?",
+        answers: [
+            "Complex sensors",
+            "High endpoint count",
+            "Network latency",
+            "Dashboard refresh rate"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Sensors, endpoints, and network latency affect performance.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 58,
+        domain: "Architecture",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "Endpoint communication is analyzed.",
+        question: "Which component manages endpoint chain membership?",
+        answers: [
+            "Tanium Client",
+            "Tanium SQL Server",
+            "Dashboard Engine",
+            "Endpoint API"
+        ],
+        correct: 0,
+        explanation: "The Tanium Client manages chain communication.",
+        tags: ["architecture"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 59,
+        domain: "Architecture",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Reviewing endpoint discovery.",
+        question: "Tanium clients must be installed on endpoints to participate in peer chains.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Endpoints require the Tanium Client.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 60,
+        domain: "Architecture",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An architect reviews endpoint communication.",
+        question: "Which benefits result from Tanium's architecture?",
+        answers: [
+            "Real-time visibility",
+            "Reduced WAN traffic",
+            "Scalable endpoint communication",
+            "Centralized scanning load"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Tanium architecture enables visibility, scalability, and low network usage.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 61,
+        domain: "Sensors",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An administrator wants to know which user is currently logged in.",
+        question: "Which sensor provides information about the logged-in user?",
+        answers: [
+            "Logged In User",
+            "Operating System",
+            "Network Adapter",
+            "Computer Name"
+        ],
+        correct: 0,
+        explanation: "The Logged In User sensor returns the active user on the endpoint.",
+        tags: ["sensors", "inventory"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 62,
+        domain: "Sensors",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Reviewing endpoint data collection.",
+        question: "Sensors can collect both real-time and cached information from endpoints.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Some sensors execute live while others use cached data.",
+        tags: ["sensors"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 63,
+        domain: "Sensors",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team collects hardware inventory.",
+        question: "Which information can sensors typically retrieve?",
+        answers: [
+            "CPU model",
+            "Memory size",
+            "Disk capacity",
+            "SQL database schema"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Hardware sensors can gather CPU, RAM, and disk information.",
+        tags: ["inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 64,
+        domain: "Asking Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to know which machines have low disk space.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Free Disk Space",
+            "Operating System",
+            "Running Processes",
+            "Network Adapter"
+        ],
+        correct: 0,
+        explanation: "Free Disk Space reports available disk capacity.",
+        tags: ["queries"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 65,
+        domain: "Asking Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Understanding Tanium queries.",
+        question: "Questions can be scoped to a specific computer group.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Questions can target defined endpoint groups.",
+        tags: ["queries"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 66,
+        domain: "Asking Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team is building a complex query.",
+        question: "Which components are part of a Tanium question?",
+        answers: [
+            "Sensors",
+            "Filters",
+            "Computer groups",
+            "Database tables"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Questions combine sensors, filters, and group targeting.",
+        tags: ["queries"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 67,
+        domain: "Refining Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to target only Linux endpoints.",
+        question: "Which filter should be applied?",
+        answers: [
+            "Operating System contains Linux",
+            "Hostname contains linux",
+            "Machine Type equals Linux",
+            "Endpoint Type equals Linux"
+        ],
+        correct: 0,
+        explanation: "Filtering by Operating System is the correct method.",
+        tags: ["filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 68,
+        domain: "Refining Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Working with dynamic groups.",
+        question: "Dynamic computer groups rely on sensor results to determine membership.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Dynamic groups evaluate sensor conditions automatically.",
+        tags: ["groups"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 69,
+        domain: "Refining Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An operator organizes endpoint groups.",
+        question: "Which advantages do computer groups provide?",
+        answers: [
+            "Scoped queries",
+            "Targeted actions",
+            "Improved organization",
+            "Automatic OS patching"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Groups help scope queries and actions.",
+        tags: ["groups"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 70,
+        domain: "Taking Action",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "A script needs to run across several endpoints.",
+        question: "What is required before executing an action?",
+        answers: [
+            "Define the target endpoints",
+            "Restart the Tanium server",
+            "Update SQL database",
+            "Create new sensors"
+        ],
+        correct: 0,
+        explanation: "Actions must target endpoints or groups.",
+        tags: ["actions"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 71,
+        domain: "Taking Action",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Action management review.",
+        question: "Actions can have expiration times to limit execution windows.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Expiration prevents actions from running indefinitely.",
+        tags: ["actions"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 72,
+        domain: "Taking Action",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An admin is configuring a large deployment.",
+        question: "Which settings help control action execution?",
+        answers: [
+            "Distribution time",
+            "Start time",
+            "Target group",
+            "Database index"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Distribution, start time, and targeting control actions.",
+        tags: ["actions"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 73,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "A team wants detailed endpoint threat visibility.",
+        question: "Which module provides threat detection capabilities?",
+        answers: [
+            "Reveal",
+            "Deploy",
+            "Patch",
+            "Connect"
+        ],
+        correct: 0,
+        explanation: "Reveal focuses on threat detection and investigation.",
+        tags: ["modules"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 74,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Reviewing Tanium Connect.",
+        question: "The Connect module exports Tanium data to external systems.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Connect integrates Tanium data with other tools.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 75,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An organization uses multiple modules.",
+        question: "Which modules assist with vulnerability and patch management?",
+        answers: [
+            "Comply",
+            "Patch",
+            "Deploy",
+            "Discover"
+        ],
+        correct: [0, 1],
+        explanation: "Comply handles vulnerability scanning while Patch manages updates.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 76,
+        domain: "Reporting",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An analyst creates visual metrics.",
+        question: "Where are charts and visualizations commonly displayed?",
+        answers: [
+            "Dashboards",
+            "Saved Questions",
+            "Endpoint Logs",
+            "Server Console"
+        ],
+        correct: 0,
+        explanation: "Dashboards visualize collected data.",
+        tags: ["dashboards"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 77,
+        domain: "Reporting",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Exporting Tanium results.",
+        question: "CSV files are commonly used for exporting Tanium query data.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "CSV files are widely compatible with spreadsheets.",
+        tags: ["reporting"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 78,
+        domain: "Reporting",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A reporting dashboard is being built.",
+        question: "Which elements can dashboards include?",
+        answers: [
+            "Charts",
+            "Tables",
+            "Saved question results",
+            "SQL server backups"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Dashboards include charts and query results.",
+        tags: ["reporting"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 79,
+        domain: "Security",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin is reviewing user privileges.",
+        question: "Which feature limits which actions a user can perform?",
+        answers: [
+            "RBAC",
+            "Endpoint Sensors",
+            "Peer Chains",
+            "Saved Questions"
+        ],
+        correct: 0,
+        explanation: "Role-Based Access Control limits user capabilities.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 80,
+        domain: "Security",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Security auditing.",
+        question: "Audit logs can be used to review administrative actions.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Audit logs track administrative activities.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 81,
+        domain: "Security",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Security best practices review.",
+        question: "Which features improve administrative security?",
+        answers: [
+            "RBAC",
+            "Audit logs",
+            "Encryption",
+            "Peer chains"
+        ],
+        correct: [0, 1, 2],
+        explanation: "RBAC, logging, and encryption enhance security.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 82,
+        domain: "Performance",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Performance analysis.",
+        question: "Endpoint network latency can impact query response time.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Network latency affects response speed.",
+        tags: ["performance"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 83,
+        domain: "Performance",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin analyzes slow results.",
+        question: "Which factor is most likely to slow queries?",
+        answers: [
+            "Complex sensor logic",
+            "Dashboard colors",
+            "Server theme",
+            "Endpoint hostname length"
+        ],
+        correct: 0,
+        explanation: "Complex sensors increase execution time.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 84,
+        domain: "Performance",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Investigating query delays.",
+        question: "Which elements influence query performance?",
+        answers: [
+            "Sensor complexity",
+            "Network latency",
+            "Endpoint count",
+            "Dashboard layout"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Sensors, endpoints, and network conditions affect performance.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 85,
+        domain: "Architecture",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A system architect evaluates Tanium infrastructure.",
+        question: "Which component aggregates endpoint responses before returning results to the server?",
+        answers: [
+            "Peer endpoint",
+            "Tanium Database",
+            "SQL Engine",
+            "Dashboard Module"
+        ],
+        correct: 0,
+        explanation: "Peers aggregate results before sending them up the chain.",
+        tags: ["architecture"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 86,
+        domain: "Architecture",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Understanding endpoint roles.",
+        question: "Every endpoint in a Tanium environment can act as a relay for queries.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Endpoints pass queries and responses along the chain.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 87,
+        domain: "Architecture",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Reviewing distributed architecture.",
+        question: "Which characteristics define Tanium's architecture?",
+        answers: [
+            "Peer communication",
+            "Distributed processing",
+            "Local execution",
+            "Centralized scanning"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Tanium relies on distributed peer communication.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 88,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to distribute software updates.",
+        question: "Which module manages software deployment?",
+        answers: [
+            "Deploy",
+            "Reveal",
+            "Connect",
+            "Discover"
+        ],
+        correct: 0,
+        explanation: "Deploy distributes software packages.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 89,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Module capabilities review.",
+        question: "The Discover module helps identify unmanaged devices on the network.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Discover identifies assets that are not yet managed.",
+        tags: ["modules"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 90,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Endpoint management review.",
+        question: "Which modules help manage endpoint configuration or updates?",
+        answers: [
+            "Deploy",
+            "Patch",
+            "Comply",
+            "Connect"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Deploy, Patch, and Comply manage endpoints.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+    {
+        id: 91,
+        domain: "Sensors",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An administrator wants to identify the IP address of endpoints.",
+        question: "Which sensor provides the endpoint IP address?",
+        answers: [
+            "IP Address",
+            "Computer Name",
+            "Operating System",
+            "Network Status"
+        ],
+        correct: 0,
+        explanation: "The IP Address sensor returns the endpoint network address.",
+        tags: ["sensors", "network"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 92,
+        domain: "Sensors",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Sensor performance review.",
+        question: "Complex sensors can increase query execution time on endpoints.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Sensors with complex logic require more execution time.",
+        tags: ["sensors", "performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 93,
+        domain: "Sensors",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An operator collects endpoint network information.",
+        question: "Which network information can sensors retrieve?",
+        answers: [
+            "IP address",
+            "MAC address",
+            "Network adapter details",
+            "Firewall vendor contracts"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Sensors can gather network adapter, IP, and MAC details.",
+        tags: ["network", "inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 94,
+        domain: "Asking Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst wants to identify endpoints with a specific installed application.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Installed Applications",
+            "Running Processes",
+            "Operating System",
+            "Logged In User"
+        ],
+        correct: 0,
+        explanation: "Installed Applications lists software installed on endpoints.",
+        tags: ["queries", "inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 95,
+        domain: "Asking Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Question management review.",
+        question: "Questions in Tanium are used to retrieve endpoint information in real time.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Questions collect real-time endpoint data through sensors.",
+        tags: ["queries"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 96,
+        domain: "Asking Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team is designing standardized queries.",
+        question: "Which benefits come from using saved questions?",
+        answers: [
+            "Reusability",
+            "Consistency",
+            "Easier dashboard integration",
+            "Automatic patch deployment"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Saved questions improve reuse and reporting consistency.",
+        tags: ["queries", "reporting"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 97,
+        domain: "Refining Questions",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to target laptops only.",
+        question: "Which filter should be used?",
+        answers: [
+            "Machine Type equals Laptop",
+            "Operating System equals Windows",
+            "Hostname contains LAP",
+            "CPU Type equals Mobile"
+        ],
+        correct: 0,
+        explanation: "Machine Type helps distinguish laptops from other systems.",
+        tags: ["filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 98,
+        domain: "Refining Questions",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Query targeting review.",
+        question: "Computer groups help limit which endpoints receive a query.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Groups define endpoint scope.",
+        tags: ["groups"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 99,
+        domain: "Refining Questions",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An organization manages thousands of endpoints.",
+        question: "Which advantages come from dynamic groups?",
+        answers: [
+            "Automatic membership updates",
+            "Reduced manual management",
+            "Sensor-based targeting",
+            "Manual IP assignment"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Dynamic groups automatically adjust membership.",
+        tags: ["groups"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 100,
+        domain: "Taking Action",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An admin deploys a configuration change.",
+        question: "Which feature executes commands across endpoints?",
+        answers: [
+            "Tanium Actions",
+            "Saved Questions",
+            "Sensors",
+            "Dashboards"
+        ],
+        correct: 0,
+        explanation: "Actions allow administrators to run commands.",
+        tags: ["actions"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 101,
+        domain: "Taking Action",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Action control review.",
+        question: "Action distribution time can reduce the load on the network.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Distribution spreads execution across endpoints.",
+        tags: ["actions", "performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 102,
+        domain: "Taking Action",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An action must run safely across many systems.",
+        question: "Which controls help manage action execution?",
+        answers: [
+            "Target computer groups",
+            "Start time scheduling",
+            "Expiration time",
+            "Dashboard permissions"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Actions support targeting, scheduling, and expiration.",
+        tags: ["actions"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 103,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "A security analyst wants endpoint threat investigation tools.",
+        question: "Which module provides threat hunting capabilities?",
+        answers: [
+            "Reveal",
+            "Deploy",
+            "Connect",
+            "Discover"
+        ],
+        correct: 0,
+        explanation: "Reveal provides threat detection and investigation features.",
+        tags: ["modules", "security"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 104,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Module functionality review.",
+        question: "The Patch module helps automate operating system patch management.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Patch manages operating system updates.",
+        tags: ["modules", "patch"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 105,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Endpoint management planning.",
+        question: "Which modules help maintain endpoint health?",
+        answers: [
+            "Patch",
+            "Deploy",
+            "Comply",
+            "Connect"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Patch, Deploy, and Comply manage endpoint health.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 106,
+        domain: "Reporting",
+        type: "single_choice",
+        difficulty: "easy",
+        scenario: "An analyst builds visual reports.",
+        question: "Which interface is primarily used to visualize Tanium data?",
+        answers: [
+            "Dashboards",
+            "Endpoint Console",
+            "Server Terminal",
+            "SQL Manager"
+        ],
+        correct: 0,
+        explanation: "Dashboards display query results visually.",
+        tags: ["reporting"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 107,
+        domain: "Reporting",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Reporting review.",
+        question: "Saved questions can be used as data sources for dashboards.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Dashboards often rely on saved questions.",
+        tags: ["reporting"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 108,
+        domain: "Reporting",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A team exports Tanium results.",
+        question: "Which formats are commonly used to export data?",
+        answers: [
+            "CSV",
+            "JSON",
+            "XML",
+            "SQL Backup"
+        ],
+        correct: [0, 1, 2],
+        explanation: "CSV, JSON, and XML are common export formats.",
+        tags: ["reporting"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 109,
+        domain: "Security",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An administrator needs to control user permissions.",
+        question: "Which mechanism enforces user access levels?",
+        answers: [
+            "RBAC",
+            "Peer Chains",
+            "Endpoint Sensors",
+            "Network Filters"
+        ],
+        correct: 0,
+        explanation: "Role-Based Access Control defines user permissions.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 110,
+        domain: "Security",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Security monitoring.",
+        question: "Audit logs provide records of administrative actions.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Audit logs track administrative activities.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 111,
+        domain: "Security",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A security review is being conducted.",
+        question: "Which mechanisms help protect Tanium environments?",
+        answers: [
+            "RBAC",
+            "Audit logging",
+            "Data encryption",
+            "Dashboard themes"
+        ],
+        correct: [0, 1, 2],
+        explanation: "RBAC, logs, and encryption strengthen security.",
+        tags: ["security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 112,
+        domain: "Performance",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Performance monitoring.",
+        question: "Large endpoint environments benefit from Tanium’s peer-to-peer architecture.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Peer chains allow efficient scaling.",
+        tags: ["performance", "architecture"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 113,
+        domain: "Performance",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An admin wants to improve query performance.",
+        question: "Which factor should be optimized first?",
+        answers: [
+            "Sensor efficiency",
+            "Dashboard color scheme",
+            "Server hostname",
+            "Endpoint screen resolution"
+        ],
+        correct: 0,
+        explanation: "Sensor efficiency strongly impacts performance.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 114,
+        domain: "Performance",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Query performance is being analyzed.",
+        question: "Which elements influence query performance?",
+        answers: [
+            "Sensor complexity",
+            "Network latency",
+            "Endpoint count",
+            "Dashboard refresh interval"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Sensors, network conditions, and endpoint volume affect speed.",
+        tags: ["performance"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 115,
+        domain: "Architecture",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A system architect evaluates communication flow.",
+        question: "What allows query responses to travel efficiently back to the server?",
+        answers: [
+            "Peer aggregation",
+            "Direct SQL replication",
+            "Endpoint API polling",
+            "Dashboard caching"
+        ],
+        correct: 0,
+        explanation: "Peer aggregation passes responses through the chain.",
+        tags: ["architecture"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 116,
+        domain: "Architecture",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Chain communication review.",
+        question: "Endpoints in Tanium chains help relay queries and responses.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Each endpoint helps propagate queries through the chain.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 117,
+        domain: "Architecture",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Architecture design review.",
+        question: "Which characteristics define Tanium’s distributed architecture?",
+        answers: [
+            "Peer communication",
+            "Distributed processing",
+            "Local execution of sensors",
+            "Centralized vulnerability scanning"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Peer communication and distributed execution define Tanium.",
+        tags: ["architecture"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 118,
+        domain: "Modules",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A team wants to discover unmanaged assets.",
+        question: "Which module identifies devices not currently managed by Tanium?",
+        answers: [
+            "Discover",
+            "Deploy",
+            "Reveal",
+            "Connect"
+        ],
+        correct: 0,
+        explanation: "Discover identifies unmanaged network assets.",
+        tags: ["modules"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 119,
+        domain: "Modules",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Module functionality.",
+        question: "The Deploy module distributes software packages to endpoints.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Deploy is used for software distribution.",
+        tags: ["modules"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 120,
+        domain: "Modules",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "Endpoint lifecycle management.",
+        question: "Which modules are commonly used to manage endpoint updates and compliance?",
+        answers: [
+            "Patch",
+            "Comply",
+            "Deploy",
+            "Connect"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Patch, Comply, and Deploy manage updates and compliance.",
+        tags: ["modules"],
         examWeight: 2,
         shuffleAnswers: true
     }
-];
+
+
+]

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
 
         <div class="logo-tanium">
             <img src="./assets/header-logo.svg" alt="">
-            <p>Tanium Certification Operator</p>
+            <p>Tanium Certified Operator</p>
         </div>
 
         <!-- HEADER -->
@@ -25,24 +25,24 @@
             <div class="exam-info">
                 <div class="attempts-info">
                     <i class="fa-solid fa-user-check"></i>
-                    Tentativas: <span id="currentAttempt">0</span> / <span id="maxAttempts">3</span> -
-                    Restam: <span id="remainingAttempts">3</span>
+                    Attempts: <span id="currentAttempt">0</span> / <span id="maxAttempts">3</span> -
+                    Remaining: <span id="remainingAttempts">3</span>
                 </div>
                 <div class="timer">
                     <i class="fa-solid fa-clock"></i>
-                    Tempo restante: <span id="time">105:00</span>
+                    Time Remaining: <span id="time">105:00</span>
                 </div>
                 <div class="score-info">
                     <i class="fa-solid fa-list-ol"></i>
-                    Questões: <span id="totalQuestions">0</span>
+                    Questions: <span id="totalQuestions">0</span>
                 </div>
                 <div class="answered-info">
                     <i class="fa-solid fa-check-circle"></i>
-                    Respondidas: <span id="answeredCount">0</span>
+                    Answered: <span id="answeredCount">0</span>
                 </div>
                 <div class="mode-info">
                     <i class="fa-solid fa-book"></i>
-                    Modo Estudo: <span id="studyModeStatus">Desativado</span>
+                    Study Mode: <span id="studyModeStatus">Disabled</span>
                 </div>
             </div>
             <div class="progressbar">
@@ -50,100 +50,215 @@
             </div>
         </header>
 
-        <!-- WRAPPER PARA SIDEBAR + CONTEÚDO PRINCIPAL -->
+        <!-- Candidate Profile -->
+        <section class="candidate-profile" id="candidateProfile">
+            <header class="profile-header">
+                <h2><i class="fa-solid fa-id-card-clip"></i> Candidate Profile</h2>
+            </header>
+
+            <div class="profile-content">
+                <p>
+                    An entry-level Tanium user with a minimum of 1–3 years of IT operations and/or
+                    security experience and a minimum of 3–6 months of Tanium experience. The
+                    candidate should have completed the Tanium Essentials course and be prepared
+                    to be assessed on terminal objectives (achieved through enabling objectives;
+                    the specifics). The candidate is familiar with Tanium foundational skills
+                    and has a basic understanding of the operation and management of enterprise
+                    networks.
+                </p>
+
+                <div class="profile-row">
+                    <h3><i class="fa-solid fa-circle-check"></i> Prerequisites Required:</h3>
+                    <span>None</span>
+                </div>
+
+                <div class="profile-row">
+                    <h3><i class="fa-solid fa-circle-exclamation"></i> Required:</h3>
+                    <span>Passing score on the TCO exam</span>
+                </div>
+
+                <div class="profile-row">
+                    <h3>Recommended Courses:</h3>
+                </div>
+                <ul class="course-list">
+                    <li>Getting Started with Tanium Course</li>
+                    <li>Tanium Essentials Course</li>
+                </ul>
+            </div>
+
+            <div class="logo-tco">
+                <img src="./assets/logo-tco.png" alt="">
+            </div>
+        </section>
+
+        <!-- WRAPPER FOR SIDEBAR + MAIN CONTENT -->
         <div class="content-wrapper">
 
-            <!-- SIDEBAR ESQUERDA -->
+            <!-- LEFT SIDEBAR -->
             <aside class="sidebar">
 
-                <!-- BOTÕES DE CONTROLE -->
+                <!-- CONTROL BUTTONS -->
                 <section class="top-controls" id="topControls" style="display:none;">
-                    <button type="button" id="toggleStudyMode"><i class="fa-solid fa-book"></i> Ativar modo
-                        estudo</button>
-                    <button type="button" id="openStats"><i class="fa-solid fa-chart-bar"></i> Ver estatísticas</button>
-                    <button type="button" id="questionNavigator"><i class="fa-solid fa-list"></i> Navegar pelas
-                        questões</button>
+                    <button type="button" id="toggleStudyMode"><i class="fa-solid fa-book"></i> Enable Study
+                        Mode</button>
+                    <button type="button" id="openStats"><i class="fa-solid fa-chart-bar"></i> View Statistics</button>
+                    <button type="button" id="questionNavigator"><i class="fa-solid fa-list"></i> Question
+                        Navigator</button>
                 </section>
 
-                <!-- SEÇÃO "SOBRE ESTE SIMULADO" -->
+                <!-- ABOUT THIS PRACTICE EXAM -->
                 <section class="exam-intro" id="examIntro">
                     <div class="intro-header">
-                        <h2><i class="fa-solid fa-graduation-cap"></i> Sobre este Simulado</h2>
+                        <h2><i class="fa-solid fa-graduation-cap"></i> About This Practice Exam</h2>
                         <button id="toggleIntro" class="toggle-intro"><i class="fa-solid fa-chevron-up"></i>
-                            Ocultar</button>
+                            Hide</button>
                     </div>
+
                     <div class="intro-content">
                         <p class="intro-description">
-                            Este simulado foi criado para ajudar você a se preparar para a certificação
-                            <strong>Tanium Certified Operator (TCO)</strong>.
-                            As perguntas seguem o mesmo estilo da prova oficial, incluindo cenários reais,
-                            múltipla escolha e análise de arquitetura da plataforma Tanium.
+                            This practice exam was created to help you prepare for the
+                            <strong>Tanium Certified Operator (TCO)</strong> certification.
+                            The questions follow the same style as the official exam, including
+                            real-world scenarios, multiple choice questions, and analysis of the
+                            Tanium platform architecture.
                         </p>
+
                         <div class="intro-cards">
+
                             <div class="intro-card">
                                 <i class="fa-solid fa-list-check"></i>
-                                <h3>Formato do exame</h3>
-                                <p>Perguntas de múltipla escolha semelhantes ao exame oficial. Algumas perguntas podem
-                                    ter mais de uma resposta correta.</p>
+                                <h3>Exam Format</h3>
+                                <p>Multiple choice questions similar to the official exam. Some questions may have more
+                                    than one correct answer.</p>
                             </div>
+
                             <div class="intro-card">
                                 <i class="fa-solid fa-clock"></i>
-                                <h3>Tempo de prova</h3>
-                                <p>Você terá <strong>105 minutos</strong> para completar todas as questões.</p>
+                                <h3>Exam Duration</h3>
+                                <p>You will have <strong>105 minutes</strong> to complete all questions.</p>
                             </div>
+
                             <div class="intro-card">
                                 <i class="fa-solid fa-rotate"></i>
-                                <h3>Tentativas</h3>
-                                <p>O simulado permite até <strong>3 tentativas</strong>. Cada tentativa simula uma nova
-                                    prova completa.</p>
+                                <h3>Attempts</h3>
+                                <p>The practice exam allows up to <strong>3 attempts</strong>. Each attempt simulates a
+                                    new full exam.</p>
                             </div>
+
                             <div class="intro-card">
                                 <i class="fa-solid fa-book"></i>
-                                <h3>Modo Estudo</h3>
-                                <p>No modo estudo você verá explicações detalhadas após responder cada questão, ajudando
-                                    a entender o raciocínio correto.</p>
+                                <h3>Study Mode</h3>
+                                <p>In study mode you will see detailed explanations after answering each question,
+                                    helping you understand the correct reasoning.</p>
                             </div>
+
                         </div>
+
                         <div class="intro-tips">
-                            <h3><i class="fa-solid fa-lightbulb"></i> Dicas para fazer o simulado</h3>
+                            <h3><i class="fa-solid fa-lightbulb"></i> Tips for Taking the Practice Exam</h3>
                             <ul>
-                                <li><i class="fa-solid fa-glasses"></i> Leia cada cenário com atenção.</li>
-                                <li><i class="fa-regular fa-circle-question"></i> Algumas perguntas possuem múltiplas
-                                    respostas.</li>
-                                <li><i class="fa-solid fa-book-atlas"></i> Utilize o navegador de questões para revisar.
-                                </li>
-                                <li><i class="fa-solid fa-book-atlas"></i> Tente simular um ambiente real de prova.</li>
-                                <li><i class="fa-solid fa-face-smile-wink"></i> O modo estudo só pode ser habilitado
-                                    após iniciar a prova.</li>
+                                <li><i class="fa-solid fa-glasses"></i> Read each scenario carefully.</li>
+                                <li><i class="fa-regular fa-circle-question"></i> Some questions have multiple correct
+                                    answers.</li>
+                                <li><i class="fa-solid fa-book-atlas"></i> Use the question navigator to review.</li>
+                                <li><i class="fa-solid fa-book-atlas"></i> Try to simulate a real exam environment.</li>
+                                <li><i class="fa-solid fa-face-smile-wink"></i> Study mode can only be enabled after
+                                    starting the exam.</li>
                             </ul>
                         </div>
+
                         <div class="intro-actions">
-                            <button type="button" id="startQuiz" class="start-quiz-btn"><i class="fa-solid fa-play"></i>
-                                Iniciar Simulado</button>
+                            <button type="button" id="startQuiz" class="start-quiz-btn">
+                                <i class="fa-solid fa-play"></i> Start Practice Exam
+                            </button>
                         </div>
+
                     </div>
                 </section>
 
             </aside>
 
-            <!-- CONTEÚDO PRINCIPAL -->
+            <!-- MAIN CONTENT -->
             <div class="main-content">
 
+                <!-- EXAM BLUEPRINT -->
+                <section id="examBlueprint" class="exam-blueprint">
+                    <h2><i class="fa-solid fa-file-contract"></i> Exam Blueprint</h2>
+                    <p>The blueprint provides general guidelines for the content likely to be included on the exam.
+                        Related topics may also appear on any specific delivery of the exam. Blueprints may change at
+                        any time without notice.</p>
+
+                    <div class="blueprint-grid">
+
+                        <div class="blueprint-item">
+                            <h3>ASKING QUESTIONS – 22%</h3>
+                            <ul>
+                                <li>Given a scenario, query endpoints for real-time information</li>
+                                <li>Given a scenario, use basic features of Tanium to gather relevant information</li>
+                                <li>Determine the appropriate method to create a saved question</li>
+                                <li>Defend why Tanium is an efficient user of network resources</li>
+                            </ul>
+                        </div>
+
+                        <div class="blueprint-item">
+                            <h3>REFINING QUESTIONS – 23%</h3>
+                            <ul>
+                                <li>Given a scenario, target endpoints for questions or actions by using natural
+                                    language questions or the question builder</li>
+                                <li>Identify the methods to drill down and merge questions</li>
+                                <li>Explain manual and dynamic groups and custom tags</li>
+                                <li>Given a scenario, generate a report to identify computers sharing a common
+                                    characteristic</li>
+                            </ul>
+                        </div>
+
+                        <div class="blueprint-item">
+                            <h3>TAKING ACTION – 15%</h3>
+                            <ul>
+                                <li>Given a scenario, make changes to an endpoint</li>
+                                <li>Given a scenario, verify the state of an endpoint before and after making changes
+                                </li>
+                                <li>Given a scenario, automate remediation using scheduled recurring actions</li>
+                            </ul>
+                        </div>
+
+                        <div class="blueprint-item">
+                            <h3>NAVIGATION AND BASIC MODULE FUNCTIONS – 23%</h3>
+                            <ul>
+                                <li>Given a scenario, navigate to a module to perform a basic module specific task</li>
+                                <li>Interpret module specific historical results</li>
+                                <li>Given a scenario, determine the appropriate area to gather task specific information
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blueprint-item">
+                            <h3>REPORT GENERATION AND DATA EXPORT – 17%</h3>
+                            <ul>
+                                <li>Determine the correct method to export required data for use outside of the
+                                    application</li>
+                                <li>Given a scenario, create reusable reports</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
                 <!-- QUIZ -->
-                <main>
+                <main id="quizContainer" style="display:none;">
                     <form id="quiz" autocomplete="off"></form>
                 </main>
 
-                <!-- BOTÕES DE AÇÃO -->
+                <!-- ACTION BUTTONS -->
                 <div class="buttons" id="footerControls" style="display:none;">
-                    <button type="button" id="pause"><i class="fa-solid fa-pause"></i> Pausar tentativa</button>
-                    <button type="button" id="finish"><i class="fa-solid fa-check"></i> Finalizar prova</button>
-                    <button type="button" id="restart"><i class="fa-solid fa-redo"></i> Refazer prova</button>
+                    <button type="button" id="pause"><i class="fa-solid fa-pause"></i> Pause Attempt</button>
+                    <button type="button" id="finish"><i class="fa-solid fa-check"></i> Finish Exam</button>
+                    <button type="button" id="restart"><i class="fa-solid fa-redo"></i> Restart Exam</button>
                 </div>
 
-                <!-- PAINEL DO MODO ESTUDO -->
+                <!-- STUDY MODE PANEL -->
                 <section id="studyExplanation" class="study-panel" style="display:none;">
-                    <h3><i class="fa-solid fa-book-open"></i> Explicação da resposta</h3>
+                    <h3><i class="fa-solid fa-book-open"></i> Answer Explanation</h3>
                     <div id="explanationContent"></div>
                 </section>
 
@@ -153,61 +268,61 @@
 
         <!-- FOOTER -->
         <footer>
-            <p> &copy; 2026 - Joemarvi Company - All Rights Reserved</p>
+            <p>&copy; 2026 - Joemarvi Company - All Rights Reserved</p>
         </footer>
 
     </div>
 
     <!-- OVERLAYS -->
+
     <div id="navigatorOverlay" class="overlay" style="display:none;">
         <div class="overlay-content">
-            <h2><i class="fa-solid fa-list"></i> Navegação pelas Questões</h2>
+            <h2><i class="fa-solid fa-list"></i> Question Navigation</h2>
             <div id="navigatorContainer"></div>
             <div class="overlay-buttons">
-                <button type="button" id="closeNavigator"><i class="fa-solid fa-times"></i> Fechar</button>
+                <button type="button" id="closeNavigator"><i class="fa-solid fa-times"></i> Close</button>
             </div>
         </div>
     </div>
 
     <div id="pauseOverlay" class="overlay" style="display:none;">
         <div class="overlay-content">
-            <h2><i class="fa-solid fa-pause-circle"></i> Prova Pausada</h2>
-            <p>A prova está pausada.</p>
+            <h2><i class="fa-solid fa-pause-circle"></i> Exam Paused</h2>
+            <p>The exam is currently paused.</p>
             <div class="overlay-buttons">
-                <button type="button" id="resumeOverlay"><i class="fa-solid fa-play"></i> Retomar prova</button>
-                <button type="button" id="restartOverlay"><i class="fa-solid fa-redo"></i> Reiniciar prova</button>
+                <button type="button" id="resumeOverlay"><i class="fa-solid fa-play"></i> Resume Exam</button>
+                <button type="button" id="restartOverlay"><i class="fa-solid fa-redo"></i> Restart Exam</button>
             </div>
         </div>
     </div>
 
     <div id="warningOverlay" class="overlay" style="display:none;">
         <div class="overlay-content">
-            <h2><i class="fa-solid fa-triangle-exclamation"></i> Atenção</h2>
-            <p>Você ainda não respondeu todas as questões.</p>
+            <h2><i class="fa-solid fa-triangle-exclamation"></i> Warning</h2>
+            <p>You have not answered all questions yet.</p>
             <div class="overlay-buttons">
-                <button type="button" id="closeWarning"><i class="fa-solid fa-arrow-right"></i> Continuar
-                    prova</button>
+                <button type="button" id="closeWarning"><i class="fa-solid fa-arrow-right"></i> Continue Exam</button>
             </div>
         </div>
     </div>
 
     <div id="statsOverlay" class="overlay" style="display:none;">
         <div class="overlay-content stats-box">
-            <h2><i class="fa-solid fa-chart-bar"></i> Estatísticas de Desempenho</h2>
-            <p>Desempenho por tema:</p>
+            <h2><i class="fa-solid fa-chart-bar"></i> Performance Statistics</h2>
+            <p>Performance by topic:</p>
             <div id="statsContainer"></div>
             <div class="overlay-buttons">
-                <button type="button" id="closeStats"><i class="fa-solid fa-times"></i> Fechar</button>
+                <button type="button" id="closeStats"><i class="fa-solid fa-times"></i> Close</button>
             </div>
         </div>
     </div>
 
     <div id="resultOverlay" class="overlay" style="display:none;">
         <div class="overlay-content stats-box">
-            <h2><i class="fa-solid fa-star"></i> Resultado do Simulado</h2>
+            <h2><i class="fa-solid fa-star"></i> Practice Exam Result</h2>
             <div id="resultContent"></div>
             <div class="overlay-buttons">
-                <button type="button" id="closeResult"><i class="fa-solid fa-times"></i> Fechar</button>
+                <button type="button" id="closeResult"><i class="fa-solid fa-times"></i> Close</button>
             </div>
         </div>
     </div>

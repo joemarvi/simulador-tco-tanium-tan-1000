@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // DOM Elements
     const startBtn = document.getElementById("startQuiz");
+    const quizContainer = document.getElementById("quizContainer");
+    const candidateProfile = document.getElementById("candidateProfile"); // NOVO
     const quiz = document.getElementById("quiz");
     const totalQuestions = document.getElementById("totalQuestions");
     const answeredCount = document.getElementById("answeredCount");
@@ -54,11 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentAttemptEl = document.getElementById("currentAttempt");
     const remainingAttemptsEl = document.getElementById("remainingAttempts");
 
-    // Elementos de revisão – NÃO EXISTEM NO HTML, então vamos ignorá-los
-    // (comentados para evitar erro)
-    // const reviewControls = document.getElementById("reviewControls");
-    // const reviewWrongBtn = document.getElementById("reviewWrong");
-    // const reviewAllBtn = document.getElementById("reviewAll");
+    const examBlueprint = document.getElementById("examBlueprint");
+    const topControls = document.getElementById("topControls");
+    const footerControls = document.getElementById("footerControls");
 
     // State
     const MAX_ATTEMPTS = 3;
@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (studyMode) {
             const q = questions[index];
             const options = document.querySelectorAll(`input[name='q${index}']`);
-
             options.forEach(opt => {
                 const label = opt.parentElement;
                 const value = parseInt(opt.value);
@@ -110,37 +109,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const questionDiv = document.getElementById(`question-${index}`);
-        if (questionDiv) {
-            questionDiv.classList.remove("unanswered");
-        }
+        if (questionDiv) questionDiv.classList.remove("unanswered");
     });
 
     // Pause / Resume / Restart
-    if (pauseBtn) {
-        pauseBtn.addEventListener("click", () => {
-            if (!finished && timerStarted && timer) {
-                timer.pause();
-                if (pauseOverlay) pauseOverlay.style.display = "flex";
-            }
-        });
-    }
+    if (pauseBtn) pauseBtn.addEventListener("click", () => {
+        if (!finished && timerStarted && timer) {
+            timer.pause();
+            if (pauseOverlay) pauseOverlay.style.display = "flex";
+        }
+    });
 
-    if (resumeOverlay) {
-        resumeOverlay.addEventListener("click", () => {
-            if (timer) timer.resume();
-            if (pauseOverlay) pauseOverlay.style.display = "none";
-        });
-    }
+    if (resumeOverlay) resumeOverlay.addEventListener("click", () => {
+        if (timer) timer.resume();
+        if (pauseOverlay) pauseOverlay.style.display = "none";
+    });
 
-    if (restartOverlay) {
-        restartOverlay.addEventListener("click", () => location.reload());
-    }
+    if (restartOverlay) restartOverlay.addEventListener("click", () => location.reload());
 
-    if (closeWarning) {
-        closeWarning.addEventListener("click", () => {
-            if (warningOverlay) warningOverlay.style.display = "none";
-        });
-    }
+    if (closeWarning) closeWarning.addEventListener("click", () => {
+        if (warningOverlay) warningOverlay.style.display = "none";
+    });
 
     // Study mode toggle
     if (studyModeBtn) {
@@ -150,36 +139,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Stats overlay
-    if (openStats) {
-        openStats.addEventListener("click", () => {
-            renderStats(statsContainer, calculateStats(questions));
-            if (statsOverlay) statsOverlay.style.display = "flex";
-        });
-    }
-
-    if (closeStats) {
-        closeStats.addEventListener("click", () => {
-            if (statsOverlay) statsOverlay.style.display = "none";
-        });
-    }
+    if (openStats) openStats.addEventListener("click", () => {
+        renderStats(statsContainer, calculateStats(questions));
+        if (statsOverlay) statsOverlay.style.display = "flex";
+    });
+    if (closeStats) closeStats.addEventListener("click", () => {
+        if (statsOverlay) statsOverlay.style.display = "none";
+    });
 
     // Question navigator overlay
-    if (questionNavigatorBtn) {
-        questionNavigatorBtn.addEventListener("click", () => {
-            renderNavigator(navigatorContainer, questions, questionResults, finished, showExplanation);
-            if (navigatorOverlay) navigatorOverlay.style.display = 'flex';
-        });
-    }
-
-    if (closeNavigator) {
-        closeNavigator.addEventListener("click", () => {
-            if (navigatorOverlay) navigatorOverlay.style.display = 'none';
-        });
-    }
+    if (questionNavigatorBtn) questionNavigatorBtn.addEventListener("click", () => {
+        renderNavigator(navigatorContainer, questions, questionResults, finished, showExplanation);
+        if (navigatorOverlay) navigatorOverlay.style.display = 'flex';
+    });
+    if (closeNavigator) closeNavigator.addEventListener("click", () => {
+        if (navigatorOverlay) navigatorOverlay.style.display = 'none';
+    });
 
     // Start quiz
     if (startBtn) {
         startBtn.addEventListener("click", () => {
+            // NOVO: Esconde o perfil do candidato
+            if (candidateProfile) candidateProfile.style.display = "none";
+
+            // Esconde Exam Blueprint e mostra quiz
+            if (examBlueprint) examBlueprint.style.display = "none";
+            if (quizContainer) quizContainer.style.display = "block";
+
             renderQuestions(quiz, questions);
             updateProgress(questions, answeredCount, progress);
 
@@ -191,17 +177,11 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             startBtn.style.display = "none";
-            const topControls = document.getElementById("topControls");
             if (topControls) topControls.style.display = "flex";
-            const footerControls = document.getElementById("footerControls");
             if (footerControls) footerControls.style.display = "flex";
             timerStarted = true;
         });
     }
-
-    // Review buttons (removidos – não existem no HTML)
-    // if (reviewWrongBtn) { ... }
-    // if (reviewAllBtn) { ... }
 
     // Finish quiz
     if (finishBtn) {
@@ -209,7 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (finished || !timerStarted) return;
 
             let unansweredFound = false;
-
             questions.forEach((q, i) => {
                 const selected = Array.from(document.querySelectorAll(`input[name='q${i}']:checked`));
                 const div = document.getElementById(`question-${i}`);
@@ -223,11 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             if (unansweredFound) {
-                if (warningOverlay) {
-                    warningOverlay.style.display = "flex";
-                } else {
-                    alert("Atenção! Você ainda não respondeu todas as questões.");
-                }
+                if (warningOverlay) warningOverlay.style.display = "flex";
                 return;
             }
 
@@ -266,26 +241,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             if (resultOverlay) resultOverlay.style.display = "flex";
             if (restartBtn) restartBtn.style.display = "inline-block";
-
-            // reviewControls não existe, então comentamos:
-            // if (reviewControls) reviewControls.style.display = "block";
         });
     }
 
-    // Close result overlay
-    if (closeResult) {
-        closeResult.addEventListener("click", () => {
-            if (resultOverlay) resultOverlay.style.display = "none";
-        });
-    }
+    if (closeResult) closeResult.addEventListener("click", () => {
+        if (resultOverlay) resultOverlay.style.display = "none";
+    });
 
-    // Restart
-    if (restartBtn) {
-        restartBtn.addEventListener("click", () => location.reload());
-    }
+    if (restartBtn) restartBtn.addEventListener("click", () => location.reload());
+
 });
 
-// Toggle intro (já com verificação)
+// Toggle intro section
 const toggleIntro = document.getElementById("toggleIntro");
 const introContent = document.querySelector(".intro-content");
 
