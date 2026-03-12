@@ -2756,6 +2756,581 @@ export const questionBank = [
         tags: ["interact", "security", "processes"],
         examWeight: 3,
         shuffleAnswers: true
+    },
+    {
+        id: 151,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "A security analyst needs to identify endpoints where Google Chrome is installed.",
+        question: "Which Interact query should be used?",
+        answers: [
+            "Get Installed Applications contains Google Chrome",
+            "Get Running Processes contains chrome.exe",
+            "Get Chrome Service Status",
+            "Get Browser Usage"
+        ],
+        correct: 0,
+        explanation: "Installed Applications identifies software installed on endpoints.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 152,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator needs to identify endpoints currently running PowerShell.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Running Processes contains powershell.exe",
+            "Get Installed Applications contains PowerShell",
+            "Get Windows Features contains PowerShell",
+            "Get File Exists powershell.exe"
+        ],
+        correct: 0,
+        explanation: "Running Processes identifies active processes like powershell.exe.",
+        tags: ["interact", "processes"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 153,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A threat hunter needs to identify endpoints containing a suspicious file located at C:\\Temp\\malware.exe.",
+        question: "Which query should be used?",
+        answers: [
+            "Get File Exists[C:\\Temp\\malware.exe]",
+            "Get Installed Applications contains malware.exe",
+            "Get Running Processes contains malware.exe",
+            "Get File Permissions malware.exe"
+        ],
+        correct: 0,
+        explanation: "File Exists checks whether a file path exists on endpoints.",
+        tags: ["interact", "files", "security"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 154,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An administrator wants to retrieve the version of Google Chrome installed on endpoints.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Installed Application Version[Google Chrome]",
+            "Get Installed Applications contains Chrome",
+            "Get Chrome Service Status",
+            "Get Running Processes contains chrome.exe"
+        ],
+        correct: 0,
+        explanation: "Installed Application Version returns the version number of installed applications.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 155,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An analyst wants to identify endpoints running command shell tools.",
+        question: "Which queries could detect command shell activity?",
+        answers: [
+            "Get Running Processes contains cmd.exe",
+            "Get Running Processes contains powershell.exe",
+            "Get Installed Applications contains Command Prompt",
+            "Get Running Processes contains wscript.exe"
+        ],
+        correct: [0, 1, 3],
+        explanation: "cmd.exe, powershell.exe, and wscript.exe represent active scripting or command execution processes.",
+        tags: ["interact", "processes", "security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 156,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "An operator builds queries using sensors.",
+        question: "Sensors can include parameters inside brackets to specify the target application or file.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Many sensors support parameters such as Installed Application Version[Chrome].",
+        tags: ["interact", "sensors"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 157,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator needs to identify endpoints where Microsoft Office is installed.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Installed Applications contains Microsoft Office",
+            "Get Running Processes contains office.exe",
+            "Get Office Service Status",
+            "Get Installed Application Version Office"
+        ],
+        correct: 0,
+        explanation: "Installed Applications identifies installed software.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 158,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A security analyst needs to locate endpoints containing a suspicious executable located in C:\\Windows\\Temp\\evil.exe.",
+        question: "Which query should be used?",
+        answers: [
+            "Get File Exists[C:\\Windows\\Temp\\evil.exe]",
+            "Get Running Processes contains evil.exe",
+            "Get Installed Applications contains evil",
+            "Get Antivirus Version"
+        ],
+        correct: 0,
+        explanation: "File Exists checks if a file exists at the specified path.",
+        tags: ["interact", "files", "security"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 159,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst wants to identify endpoints where the Remote Desktop service is running.",
+        question: "Which sensor should be used?",
+        answers: [
+            "Services contains TermService",
+            "Installed Applications contains Remote Desktop",
+            "Running Processes contains rdp.exe",
+            "Operating System contains Windows"
+        ],
+        correct: 0,
+        explanation: "The Services sensor identifies service status such as TermService.",
+        tags: ["interact", "services"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 160,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to retrieve the IP address of endpoints.",
+        question: "Which query should be used?",
+        answers: [
+            "Get IP Address",
+            "Get Computer Name",
+            "Get Operating System",
+            "Get Logged In User"
+        ],
+        correct: 0,
+        explanation: "The IP Address sensor retrieves endpoint network addresses.",
+        tags: ["interact", "network"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 161,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A security analyst wants to detect browsers currently running on endpoints.",
+        question: "Which queries could identify running browsers?",
+        answers: [
+            "Get Running Processes contains chrome.exe",
+            "Get Running Processes contains msedge.exe",
+            "Get Running Processes contains firefox.exe",
+            "Get Installed Applications contains Browser"
+        ],
+        correct: [0, 1, 2],
+        explanation: "Running Processes can detect active browser executables.",
+        tags: ["interact", "processes"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 162,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Query targeting review.",
+        question: "Interact queries can include filters such as 'with Is Windows equals true'.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Filters allow narrowing queries to specific endpoint characteristics.",
+        tags: ["interact", "filters"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 163,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to identify endpoints where Notepad is running.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Running Processes contains notepad.exe",
+            "Get Installed Applications contains Notepad",
+            "Get File Exists notepad.exe",
+            "Get Services contains Notepad"
+        ],
+        correct: 0,
+        explanation: "Running Processes identifies active programs.",
+        tags: ["interact", "processes"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 164,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An administrator needs to retrieve the hostname of endpoints.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Computer Name",
+            "Get IP Address",
+            "Get Operating System",
+            "Get Network Adapter"
+        ],
+        correct: 0,
+        explanation: "Computer Name returns endpoint hostnames.",
+        tags: ["interact", "inventory"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 165,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An analyst needs to identify endpoints running scripting engines.",
+        question: "Which queries could detect scripting tools?",
+        answers: [
+            "Get Running Processes contains powershell.exe",
+            "Get Running Processes contains cscript.exe",
+            "Get Running Processes contains wscript.exe",
+            "Get Installed Applications contains Script"
+        ],
+        correct: [0, 1, 2],
+        explanation: "PowerShell, cscript, and wscript are scripting engines.",
+        tags: ["interact", "security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 166,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Query execution review.",
+        question: "Interact queries collect data directly from endpoints rather than from a central database.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Queries run sensors on endpoints to collect real-time data.",
+        tags: ["interact", "architecture"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 167,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst wants to check whether WinRM service exists.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Services contains WinRM",
+            "Get Installed Applications contains WinRM",
+            "Get Running Processes contains winrm.exe",
+            "Get File Exists winrm.exe"
+        ],
+        correct: 0,
+        explanation: "Services sensor identifies Windows services.",
+        tags: ["interact", "services"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 168,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to identify endpoints where Firefox is installed.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Installed Applications contains Mozilla Firefox",
+            "Get Running Processes contains firefox.exe",
+            "Get Firefox Service Status",
+            "Get Browser History Firefox"
+        ],
+        correct: 0,
+        explanation: "Installed Applications returns installed software.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 169,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A security analyst investigates suspicious command activity.",
+        question: "Which queries could help identify command execution tools?",
+        answers: [
+            "Get Running Processes contains cmd.exe",
+            "Get Running Processes contains powershell.exe",
+            "Get Running Processes contains wmic.exe",
+            "Get Installed Applications contains Command"
+        ],
+        correct: [0, 1, 2],
+        explanation: "cmd.exe, powershell.exe, and wmic.exe are command-line tools.",
+        tags: ["interact", "security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 170,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A threat hunter needs to locate endpoints where a suspicious script file exists at C:\\Scripts\\backdoor.ps1.",
+        question: "Which query should be used?",
+        answers: [
+            "Get File Exists[C:\\Scripts\\backdoor.ps1]",
+            "Get Installed Applications contains backdoor.ps1",
+            "Get Running Processes contains backdoor.ps1",
+            "Get Script Permissions"
+        ],
+        correct: 0,
+        explanation: "File Exists verifies whether the specified file path exists.",
+        tags: ["interact", "files", "security"],
+        examWeight: 3,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 171,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst wants to check which endpoints have Java installed.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Installed Applications contains Java",
+            "Get Running Processes contains java.exe",
+            "Get Java Service Status",
+            "Get Java Version"
+        ],
+        correct: 0,
+        explanation: "Installed Applications identifies installed software.",
+        tags: ["interact", "applications"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 172,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "medium",
+        scenario: "Query results interpretation.",
+        question: "Query results may initially appear incomplete while endpoints continue responding.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Endpoints return results asynchronously through the peer chain.",
+        tags: ["interact", "queries"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 173,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to retrieve the currently logged-in user.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Logged In User",
+            "Get Computer Name",
+            "Get Operating System",
+            "Get IP Address"
+        ],
+        correct: 0,
+        explanation: "Logged In User retrieves current session user information.",
+        tags: ["interact", "users"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 174,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst needs to identify endpoints running Windows Update service.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Services contains wuauserv",
+            "Get Installed Applications contains Windows Update",
+            "Get Running Processes contains update.exe",
+            "Get File Exists update.exe"
+        ],
+        correct: 0,
+        explanation: "The Windows Update service is wuauserv.",
+        tags: ["interact", "services"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 175,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "An analyst investigates suspicious script activity.",
+        question: "Which processes may indicate script execution?",
+        answers: [
+            "powershell.exe",
+            "wscript.exe",
+            "cscript.exe",
+            "explorer.exe"
+        ],
+        correct: [0, 1, 2],
+        explanation: "PowerShell, WScript, and CScript commonly run scripts.",
+        tags: ["interact", "security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 176,
+        domain: "Interact",
+        type: "true_false",
+        difficulty: "easy",
+        scenario: "Interact query design.",
+        question: "Queries in Interact can include filters to limit results to specific operating systems.",
+        answers: ["True", "False"],
+        correct: 0,
+        explanation: "Filters help refine query targeting.",
+        tags: ["interact", "filters"],
+        examWeight: 1,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 177,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An operator wants to identify endpoints where Edge browser is running.",
+        question: "Which query should be used?",
+        answers: [
+            "Get Running Processes contains msedge.exe",
+            "Get Installed Applications contains Edge",
+            "Get Browser Version Edge",
+            "Get Services contains Edge"
+        ],
+        correct: 0,
+        explanation: "Running Processes detects active browser processes.",
+        tags: ["interact", "processes"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 178,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "medium",
+        scenario: "An analyst needs to retrieve the MAC address of endpoints.",
+        question: "Which sensor should be used?",
+        answers: [
+            "MAC Address",
+            "Computer Name",
+            "Operating System",
+            "Logged In User"
+        ],
+        correct: 0,
+        explanation: "MAC Address retrieves hardware network identifiers.",
+        tags: ["interact", "network"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 179,
+        domain: "Interact",
+        type: "multi_select",
+        difficulty: "medium",
+        scenario: "A security analyst investigates remote administration tools.",
+        question: "Which processes may indicate remote management activity?",
+        answers: [
+            "powershell.exe",
+            "wmic.exe",
+            "mstsc.exe",
+            "notepad.exe"
+        ],
+        correct: [0, 1, 2],
+        explanation: "PowerShell, WMIC, and MSTSC may be used for remote administration.",
+        tags: ["interact", "security"],
+        examWeight: 2,
+        shuffleAnswers: true
+    },
+
+    {
+        id: 180,
+        domain: "Interact",
+        type: "single_choice",
+        difficulty: "hard",
+        scenario: "A threat hunter needs to find endpoints where a suspicious executable exists in C:\\ProgramData\\badtool.exe.",
+        question: "Which query should be used?",
+        answers: [
+            "Get File Exists[C:\\ProgramData\\badtool.exe]",
+            "Get Running Processes contains badtool.exe",
+            "Get Installed Applications contains badtool",
+            "Get Antivirus Version"
+        ],
+        correct: 0,
+        explanation: "File Exists verifies if a file exists at a specific path.",
+        tags: ["interact", "files", "security"],
+        examWeight: 3,
+        shuffleAnswers: true
     }
+
 
 ]
