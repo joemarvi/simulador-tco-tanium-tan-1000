@@ -1,3 +1,4 @@
+//js\results.js
 export function calculateStats(questions) {
     let stats = {};
     questions.forEach((q, i) => {
@@ -39,7 +40,11 @@ export function saveAttemptResult(stats, questions, questionResults) {
         } else {
             const selected = Array.from(document.querySelectorAll(`input[name='q${i}']:checked`))
                 .map(input => parseInt(input.value));
-            wrongQuestions.push({ id: q.id ?? i, selected });
+
+            wrongQuestions.push({
+                id: q.id ?? i,
+                selected
+            });
         }
     });
 
@@ -74,15 +79,20 @@ export function getWrongQuestions(attemptIndex) {
 
 export function setupReviewWrongButton() {
     const buttons = document.querySelectorAll('.review-wrong-btn');
+
     buttons.forEach((btn, idx) => {
         btn.addEventListener('click', e => {
             e.preventDefault();
+
             const wrongQuestions = getWrongQuestions(idx);
+
             if (!wrongQuestions || wrongQuestions.length === 0) {
                 alert("Não há questões erradas para revisar.");
                 return;
             }
+
             localStorage.setItem("reviewQuestions", JSON.stringify(wrongQuestions));
+
             window.location.href = "review-wrong.html";
         });
     });

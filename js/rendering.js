@@ -1,67 +1,55 @@
 import { getResultsHistory } from "./results.js";
 
 export function renderQuestions(quiz, questions, questionBank = null) {
+
     if (!quiz) return;
+
     quiz.innerHTML = "";
 
-    // ===============================
-    // CARREGAR QUESTÕES DE REVIEW
-    // ===============================
     const reviewData = localStorage.getItem("reviewQuestions");
-    console.log("=== renderQuestions: reviewData raw ===", reviewData);
 
     if (reviewData && questionBank) {
+
         const reviewIds = JSON.parse(reviewData);
-        console.log("=== renderQuestions: review IDs ===", reviewIds);
 
         localStorage.removeItem("reviewQuestions");
 
         questions = reviewIds.map(id => {
+
             const original = questionBank.find(q => String(q.id) === String(id.id ?? id));
+
             if (!original) {
                 console.warn(`Questão com id ${id} não encontrada no questionBank`);
                 return null;
             }
 
-            // Cria cópia para não alterar original
-            const q = { ...original, answers: original.answers ? [...original.answers] : [] };
+            const q = {
+                ...original,
+                answers: original.answers ? [...original.answers] : []
+            };
 
-            // True/False consistente
             if (q.type === "true_false") {
                 q.answers = ["Verdadeiro", "Falso"];
                 q._reviewNoShuffle = true;
             }
 
-            // Marca respostas selecionadas se existir
             if (id.selected) {
                 q._selected = id.selected;
             }
 
-            // IMPORTANTE: marcar modo review
             q._isReview = true;
 
-            // Garante array de respostas
-            if (!q.answers || !Array.isArray(q.answers)) q.answers = [];
+            if (!q.answers || !Array.isArray(q.answers)) {
+                q.answers = [];
+            }
 
             return q;
-        }).filter(q => q !== null);
 
-        console.log(
-            "=== renderQuestions: questões finais após map ===",
-            questions.map(q => ({
-                id: q.id,
-                type: q.type,
-                answers: q.answers,
-                _selected: q._selected,
-                _isReview: q._isReview
-            }))
-        );
+        }).filter(q => q !== null);
     }
 
-    // ===============================
-    // RENDERIZAÇÃO DAS QUESTÕES
-    // ===============================
     questions.forEach((q, i) => {
+
         if (!q) return;
 
         const div = document.createElement("div");
@@ -79,9 +67,27 @@ export function renderQuestions(quiz, questions, questionBank = null) {
         }
 
         html += `<div class='questionText'><strong>Pergunta:</strong> ${q.question}</div>`;
+
+        if (q._isReview && q._selected) {
+
+            let previousAnswer = q.type === "multi_select"
+                ? q._selected.map(i => String.fromCharCode(65 + i)).join(", ")
+                : String.fromCharCode(65 + q._selected[0]);
+
+            let correctAnswer = q.type === "multi_select"
+                ? q.correct.map(i => String.fromCharCode(65 + i)).join(", ")
+                : String.fromCharCode(65 + q.correct);
+
+            html += `
+<div class="review-info">
+<b>Sua resposta anterior:</b> ${previousAnswer}<br>
+<b>Resposta correta:</b> ${correctAnswer}
+</div>`;
+        }
+
         html += `<div class='answers'>`;
 
-        let inputType = q.type === "multi_select" ? "checkbox" : "radio";
+        const inputType = q.type === "multi_select" ? "checkbox" : "radio";
 
         q.answers.forEach((answer, j) => {
 
@@ -93,9 +99,6 @@ export function renderQuestions(quiz, questions, questionBank = null) {
 
             let classes = "review-answer";
 
-            // ===============================
-            // APLICAR CORES APENAS NO REVIEW
-            // ===============================
             if (q._isReview) {
 
                 if (isSelected && !isCorrect) {
@@ -109,7 +112,7 @@ export function renderQuestions(quiz, questions, questionBank = null) {
             }
 
             const checked = isSelected ? "checked" : "";
-            const disabled = q._isReview ? "disabled" : "";
+            const disabled = q._isReview ? "" : "";
 
             html += `
 <label class="${classes}">
@@ -120,16 +123,86 @@ ${String.fromCharCode(65 + j)}) ${answer}
 
         html += `</div>`;
 
-        html += `<div class="inline-explanation" id="exp-${i}" style="display:none;"></div>`;
+        if (q._isReview && q.explanation) {
+
+            html += `
+<div class="review-explanation">
+<b>Explicação:</b><br>
+${q.explanation}
+</div>`;
+        }
 
         div.innerHTML = html;
         quiz.appendChild(div);
+
+        if (q._isReview) {
+
+            const inputs = div.querySelectorAll(`input[name="q${i}"]`);
+
+            inputs.forEach(input => {
+
+                input.addEventListener("change", () => {
+
+                    let selected = Array.from(div.querySelectorAll(`input[name="q${i}"]:checked`))
+                        .map(el => parseInt(el.value));
+
+                    let correct = false;
+
+                    if (q.type === "multi_select") {
+
+                        selected.sort();
+
+                        correct = JSON.stringify(selected) === JSON.stringify([...q.correct].sort());
+
+                    } else {
+
+                        correct = selected[0] === q.correct;
+
+                    }
+
+                    inputs.forEach(inp => {
+
+                        const label = inp.parentElement;
+                        const val = parseInt(inp.value);
+
+                        label.classList.remove("wrong", "correct");
+
+                        const optionCorrect = q.type === "multi_select"
+                            ? q.correct.includes(val)
+                            : val === q.correct;
+
+                        if (optionCorrect) {
+                            label.classList.add("correct");
+                        }
+
+                        if (inp.checked && !optionCorrect) {
+                            label.classList.add("wrong");
+                        }
+
+                    });
+
+                    if (correct) {
+                        div.classList.add("review-passed");
+                    } else {
+                        div.classList.remove("review-passed");
+                    }
+
+                });
+
+            });
+
+        }
+
     });
+
 }
+
 export function showExplanation(questions, explanationPanel, explanationContent, index) {
+
     if (!questions || !questions[index]) return;
 
     const q = questions[index];
+
     if (!q.explanation) return;
 
     if (explanationPanel) explanationPanel.style.display = "block";
@@ -144,12 +217,19 @@ export function showExplanation(questions, explanationPanel, explanationContent,
 }
 
 export function renderStats(statsContainer, stats) {
+
     if (!statsContainer) return;
 
     let html = "";
+
     for (let topic in stats) {
+
         const s = stats[topic];
-        const percent = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
+
+        const percent = s.total > 0
+            ? Math.round((s.correct / s.total) * 100)
+            : 0;
+
         html += `
 <div class="stat">
 <b>${topic}</b><br>
@@ -160,36 +240,60 @@ Percentual: ${percent}%
 
     statsContainer.innerHTML = html;
 }
+
 export function renderNavigator(navigatorContainer, questions, questionResults, finished, showExplanation) {
+
     if (!navigatorContainer) return;
 
     navigatorContainer.innerHTML = "";
+
     questions.forEach((_, i) => {
+
         const btn = document.createElement("button");
+
         btn.textContent = `Questão ${i + 1}`;
-        if (finished) btn.classList.add(questionResults[i] ? "nav-correct" : "nav-wrong");
+
+        if (finished) {
+            btn.classList.add(questionResults[i] ? "nav-correct" : "nav-wrong");
+        }
 
         btn.addEventListener("click", () => {
+
             const q = document.getElementById(`question-${i}`);
+
             const overlay = document.getElementById("navigatorOverlay");
+
             if (overlay) overlay.style.display = "none";
-            if (q) q.scrollIntoView({ behavior: "smooth", block: "center" });
+
+            if (q) q.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
         });
 
         navigatorContainer.appendChild(btn);
+
     });
+
 }
 
 export function renderResultsHistory(container, history) {
+
     if (!container) return;
 
     if (!history || history.length === 0) {
+
         container.innerHTML = `<tr><td colspan="7">Nenhum resultado registrado.</td></tr>`;
+
         return;
+
     }
 
     let html = "";
+
     history.forEach((item, index) => {
+
         const percent = item.totalQuestions > 0
             ? Math.round((item.totalCorrect / item.totalQuestions) * 100)
             : 0;
@@ -208,20 +312,31 @@ export function renderResultsHistory(container, history) {
 </button>
 </td>
 </tr>`;
+
     });
 
     container.innerHTML = html;
 
     const reviewButtons = container.querySelectorAll(".review-btn");
+
     reviewButtons.forEach(btn => {
+
         btn.addEventListener("click", () => {
+
             const index = btn.dataset.index;
+
             const historyData = getResultsHistory();
+
             const attempt = historyData[index];
+
             if (!attempt || !attempt.wrongQuestions) return;
 
             localStorage.setItem("reviewQuestions", JSON.stringify(attempt.wrongQuestions));
+
             window.location.href = "review-wrong.html";
+
         });
+
     });
+
 }
