@@ -1,8 +1,9 @@
-// timer.js
 export function updateTimerDisplay(timerDisplay, time) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    if (timerDisplay) {
+        timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    }
 }
 
 export function startTimer(updateTimerDisplay, finishCallback, initialTime = 6300) {
@@ -17,14 +18,19 @@ export function startTimer(updateTimerDisplay, finishCallback, initialTime = 630
         if (time <= 0) {
             finished = true;
             clearInterval(timerInterval);
-            finishCallback();
+            if (typeof finishCallback === "function") finishCallback();
         }
     }, 1000);
 
     return {
-        pause: () => paused = true,
-        resume: () => paused = false,
-        stop: () => { finished = true; clearInterval(timerInterval); },
+        pause: () => { paused = true; },
+        resume: () => { paused = false; },
+        stop: () => {
+            if (!finished) {
+                finished = true;
+                clearInterval(timerInterval);
+            }
+        },
         getTime: () => time
     };
 }

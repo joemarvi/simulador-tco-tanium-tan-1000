@@ -1,70 +1,227 @@
-// rendering.js
-export function renderQuestions(quiz, questions) {
+import { getResultsHistory } from "./results.js";
+
+export function renderQuestions(quiz, questions, questionBank = null) {
+    if (!quiz) return;
     quiz.innerHTML = "";
+
+    // ===============================
+    // CARREGAR QUESTÕES DE REVIEW
+    // ===============================
+    const reviewData = localStorage.getItem("reviewQuestions");
+    console.log("=== renderQuestions: reviewData raw ===", reviewData);
+
+    if (reviewData && questionBank) {
+        const reviewIds = JSON.parse(reviewData);
+        console.log("=== renderQuestions: review IDs ===", reviewIds);
+
+        localStorage.removeItem("reviewQuestions");
+
+        questions = reviewIds.map(id => {
+            const original = questionBank.find(q => String(q.id) === String(id.id ?? id));
+            if (!original) {
+                console.warn(`Questão com id ${id} não encontrada no questionBank`);
+                return null;
+            }
+
+            // Cria cópia para não alterar original
+            const q = { ...original, answers: original.answers ? [...original.answers] : [] };
+
+            // True/False consistente
+            if (q.type === "true_false") {
+                q.answers = ["Verdadeiro", "Falso"];
+                q._reviewNoShuffle = true;
+            }
+
+            // Marca respostas selecionadas se existir
+            if (id.selected) {
+                q._selected = id.selected;
+            }
+
+            // IMPORTANTE: marcar modo review
+            q._isReview = true;
+
+            // Garante array de respostas
+            if (!q.answers || !Array.isArray(q.answers)) q.answers = [];
+
+            return q;
+        }).filter(q => q !== null);
+
+        console.log(
+            "=== renderQuestions: questões finais após map ===",
+            questions.map(q => ({
+                id: q.id,
+                type: q.type,
+                answers: q.answers,
+                _selected: q._selected,
+                _isReview: q._isReview
+            }))
+        );
+    }
+
+    // ===============================
+    // RENDERIZAÇÃO DAS QUESTÕES
+    // ===============================
     questions.forEach((q, i) => {
+        if (!q) return;
+
         const div = document.createElement("div");
         div.className = "question";
         div.id = `question-${i}`;
 
         let html = `<b>QUESTÃO ${i + 1}</b>`;
-        if (q.domain) html += `<div class='topic'>Tema: ${q.domain}</div>`;
-        if (q.scenario) html += `<div class='scenario'><strong>Cenário:</strong> ${q.scenario}</div>`;
+
+        if (q.domain) {
+            html += `<div class='topic'>Tema: ${q.domain}</div>`;
+        }
+
+        if (q.scenario) {
+            html += `<div class='scenario'><strong>Cenário:</strong> ${q.scenario}</div>`;
+        }
+
         html += `<div class='questionText'><strong>Pergunta:</strong> ${q.question}</div>`;
         html += `<div class='answers'>`;
+
+        let inputType = q.type === "multi_select" ? "checkbox" : "radio";
+
         q.answers.forEach((answer, j) => {
-            const inputType = q.type === 'multi_select' ? 'checkbox' : 'radio';
-            html += `<label class='option'><input type='${inputType}' name='q${i}' value='${j}'>${String.fromCharCode(65 + j)}) ${answer}</label>`;
+
+            const isSelected = q._selected && q._selected.includes(j);
+
+            const isCorrect = q.type === "multi_select"
+                ? (q.correct || []).includes(j)
+                : j === q.correct;
+
+            let classes = "review-answer";
+
+            // ===============================
+            // APLICAR CORES APENAS NO REVIEW
+            // ===============================
+            if (q._isReview) {
+
+                if (isSelected && !isCorrect) {
+                    classes += " wrong";
+                }
+
+                if (isCorrect) {
+                    classes += " correct";
+                }
+
+            }
+
+            const checked = isSelected ? "checked" : "";
+            const disabled = q._isReview ? "disabled" : "";
+
+            html += `
+<label class="${classes}">
+<input type="${inputType}" name="q${i}" value="${j}" ${checked} ${disabled}>
+${String.fromCharCode(65 + j)}) ${answer}
+</label>`;
         });
+
         html += `</div>`;
+
         html += `<div class="inline-explanation" id="exp-${i}" style="display:none;"></div>`;
+
         div.innerHTML = html;
         quiz.appendChild(div);
     });
 }
-
 export function showExplanation(questions, explanationPanel, explanationContent, index) {
+    if (!questions || !questions[index]) return;
+
     const q = questions[index];
     if (!q.explanation) return;
 
-    explanationPanel.style.display = "block";
+    if (explanationPanel) explanationPanel.style.display = "block";
 
-    let correctText = q.type === 'multi_select'
-        ? q.correct.map(i => String.fromCharCode(65 + i)).join(', ')
+    let correctText = q.type === "multi_select"
+        ? q.correct.map(i => String.fromCharCode(65 + i)).join(", ")
         : String.fromCharCode(65 + q.correct);
 
-    explanationContent.innerHTML = `<b>Resposta correta:</b> ${correctText}<br><br>${q.explanation}`;
-
-    const inlineBox = document.getElementById(`exp-${index}`);
-    if (inlineBox) {
-        inlineBox.style.display = "block";
-        inlineBox.innerHTML = `<b>Resposta correta:</b> ${correctText}<br><br>${q.explanation}`;
+    if (explanationContent) {
+        explanationContent.innerHTML = `<b>Resposta correta:</b> ${correctText}<br><br>${q.explanation}`;
     }
 }
 
 export function renderStats(statsContainer, stats) {
+    if (!statsContainer) return;
+
     let html = "";
     for (let topic in stats) {
-        let s = stats[topic];
-        let percent = Math.round((s.correct / s.total) * 100);
-        html += `<div class='stat'><b>${topic}</b><br>Acertos: ${s.correct} / ${s.total}<br>Percentual: ${percent}%</div>`;
+        const s = stats[topic];
+        const percent = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
+        html += `
+<div class="stat">
+<b>${topic}</b><br>
+Acertos: ${s.correct}/${s.total}<br>
+Percentual: ${percent}%
+</div>`;
     }
+
     statsContainer.innerHTML = html;
 }
-
 export function renderNavigator(navigatorContainer, questions, questionResults, finished, showExplanation) {
+    if (!navigatorContainer) return;
+
     navigatorContainer.innerHTML = "";
     questions.forEach((_, i) => {
-        const btn = document.createElement('button');
+        const btn = document.createElement("button");
         btn.textContent = `Questão ${i + 1}`;
-        if (finished) {
-            btn.classList.add(questionResults[i] ? "nav-correct" : "nav-wrong");
-        }
-        btn.addEventListener('click', () => {
-            const questionElement = document.getElementById(`question-${i}`);
-            document.getElementById('navigatorOverlay').style.display = 'none';
-            questionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            if (finished && !questionResults[i]) setTimeout(() => showExplanation(questions, document.getElementById('studyExplanation'), document.getElementById('explanationContent'), i), 400);
+        if (finished) btn.classList.add(questionResults[i] ? "nav-correct" : "nav-wrong");
+
+        btn.addEventListener("click", () => {
+            const q = document.getElementById(`question-${i}`);
+            const overlay = document.getElementById("navigatorOverlay");
+            if (overlay) overlay.style.display = "none";
+            if (q) q.scrollIntoView({ behavior: "smooth", block: "center" });
         });
+
         navigatorContainer.appendChild(btn);
+    });
+}
+
+export function renderResultsHistory(container, history) {
+    if (!container) return;
+
+    if (!history || history.length === 0) {
+        container.innerHTML = `<tr><td colspan="7">Nenhum resultado registrado.</td></tr>`;
+        return;
+    }
+
+    let html = "";
+    history.forEach((item, index) => {
+        const percent = item.totalQuestions > 0
+            ? Math.round((item.totalCorrect / item.totalQuestions) * 100)
+            : 0;
+
+        html += `
+<tr>
+<td>${index + 1}</td>
+<td>${item.date}</td>
+<td>${item.time}</td>
+<td>${item.totalCorrect}</td>
+<td>${item.totalQuestions}</td>
+<td>${percent}%</td>
+<td>
+<button type="button" class="review-btn" data-index="${index}">
+<i class="fa-solid fa-circle-exclamation"></i> Review Mistakes
+</button>
+</td>
+</tr>`;
+    });
+
+    container.innerHTML = html;
+
+    const reviewButtons = container.querySelectorAll(".review-btn");
+    reviewButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const index = btn.dataset.index;
+            const historyData = getResultsHistory();
+            const attempt = historyData[index];
+            if (!attempt || !attempt.wrongQuestions) return;
+
+            localStorage.setItem("reviewQuestions", JSON.stringify(attempt.wrongQuestions));
+            window.location.href = "review-wrong.html";
+        });
     });
 }

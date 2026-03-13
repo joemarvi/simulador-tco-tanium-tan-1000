@@ -1,0 +1,116 @@
+<!-- results-history.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Practice Exam Results History</title>
+
+    <link rel="stylesheet" href="./style-results.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="page-header">
+
+            <h1>
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Practice Exam Results History
+            </h1>
+
+            <p class="subtitle">
+                Review all your previous attempts and track your progress.
+            </p>
+
+        </header>
+
+        <main>
+
+            <div class="history-wrapper">
+
+                <table class="results-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>
+                                <i class="fa-regular fa-calendar"></i>
+                                Date
+                            </th>
+
+                            <th>
+                                <i class="fa-regular fa-clock"></i>
+                                Time
+                            </th>
+
+                            <th>
+                                <i class="fa-solid fa-check"></i>
+                                Correct
+                            </th>
+
+                            <th>
+                                <i class="fa-solid fa-list"></i>
+                                Total
+                            </th>
+
+                            <th>
+                                <i class="fa-solid fa-percent"></i>
+                                Score
+                            </th>
+
+                            <th>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Review
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="historyContainer"></tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+        <footer class="page-footer">
+
+            <button class="back-btn" onclick="window.location.href='index.html'">
+
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Exam
+
+            </button>
+
+            <button class="clear-history-btn">
+                <i class="fa-solid fa-trash"></i>
+                Clear History
+            </button>
+
+        </footer>
+
+    </div>
+
+    <script type="module" src="js/history.js"></script>
+
+</body>
+
+</html>

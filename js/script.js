@@ -1,9 +1,10 @@
+// script.js
 import { prepareQuestions } from './quizData.js';
 import { renderQuestions, showExplanation, renderStats, renderNavigator } from './rendering.js';
 import { startTimer, updateTimerDisplay } from './timer.js';
 import { checkAttempts } from './attemptManager.js';
 import { toggleStudyMode } from './studyMode.js';
-import { calculateStats } from './results.js';
+import { calculateStats, saveAttemptResult, getResultsHistory } from './results.js';
 import { updateProgress } from './progress.js';
 import { questionBank } from "./questions.js";
 
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // CONFIGURAÇÃO DE TENTATIVAS
     // ===============================
 
-    const MAX_ATTEMPTS = 3;
+    const MAX_ATTEMPTS = 100;
     const BLOCK_TIME = 3 * 60 * 1000;
 
     function getAttempts() {
@@ -93,6 +94,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const topControls = document.getElementById("topControls");
     const footerControls = document.getElementById("footerControls");
 
+    // NOVO BOTÃO DE HISTÓRICO
+    const openHistory = document.getElementById("openHistory");
+
     // ===============================
     // STATE
     // ===============================
@@ -125,7 +129,60 @@ document.addEventListener("DOMContentLoaded", function () {
     // ===============================
 
     let questions = prepareQuestions(questionBank);
-    totalQuestions.textContent = questions.length;
+
+    // Função para atualizar a contagem de questões
+    function updateTotalQuestionsDisplay() {
+        if (totalQuestions) {
+            totalQuestions.textContent = questions.length;
+        }
+    }
+
+    // Checar se estamos no modo de revisão
+    const reviewData = localStorage.getItem("reviewQuestions");
+
+    if (reviewData) {
+        let reviewIds = [];
+
+        try {
+            reviewIds = JSON.parse(reviewData);
+        } catch {
+            console.warn("Erro ao carregar revisão");
+        }
+
+        // Log debug
+        console.log("=== Review Questions Loaded IDs ===", reviewIds);
+
+        // Criar cópias das questões para evitar alterar o questionBank original
+        questions = reviewIds.map(id => {
+            const q = questionBank.find(q => String(q.id) === String(id));
+            if (!q) {
+                console.warn(`Questão com id ${id} não encontrada no questionBank.`);
+                return null;
+            }
+
+            // cópia para não alterar o original
+            const copy = { ...q, answers: q.answers ? [...q.answers] : [] };
+            if (copy.type === "true_false") {
+                copy.answers = ["Verdadeiro", "Falso"];
+                copy._reviewNoShuffle = true;
+            }
+
+            console.log(`Review question loaded: ID=${copy.id}, type=${copy.type}, question="${copy.question}"`);
+            return copy;
+        }).filter(q => q != null);
+
+        // Limpar localStorage após carregar
+        localStorage.removeItem("reviewQuestions");
+
+        // Renderiza imediatamente se estiver em review
+        if (quiz) {
+            console.log(`Renderizando ${questions.length} questões de revisão...`);
+            renderQuestions(quiz, questions, questionBank);
+        }
+    }
+
+    // Atualiza a contagem de questões independente do modo
+    updateTotalQuestionsDisplay();
 
     // ===============================
     // EVENTO RESPOSTA
@@ -272,6 +329,54 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     // ===============================
+    // HISTORY PAGE
+    // ===============================
+
+    if (openHistory)
+        openHistory.addEventListener("click", () => {
+
+            window.location.href = "results-history.html";
+
+        });
+
+    // ===============================
+    // REVIEW MISTAKES BUTTON
+    // ===============================
+
+    document.addEventListener("click", function (e) {
+
+        const btn = e.target.closest(".review-btn");
+
+        if (!btn) return;
+
+        const index = btn.dataset.index;
+
+        const history = getResultsHistory();
+
+        const attempt = history[index];
+
+        if (!attempt) return;
+
+        // SALVAR OS ÍNDICES DAS QUESTÕES ERRADAS
+        const wrongQuestions = [];
+
+        attempt.questions.forEach((q, i) => {
+            if (!attempt.results[i]) {
+                wrongQuestions.push({
+                    id: q.id
+                });
+            }
+        });
+        localStorage.setItem(
+            "reviewQuestions",
+            JSON.stringify(wrongQuestions)
+        );
+
+        window.location.href = "index.html";
+
+    });
+
+    // ===============================
     // NAVIGATOR
     // ===============================
 
@@ -400,14 +505,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (timer)
                 timer.stop();
 
-            // ===============================
-            // SALVAR TENTATIVA (PERSISTENTE)
-            // ===============================
-
             currentAttempt++;
-
             setAttempts(currentAttempt);
-
             setLastAttemptTime();
 
             if (currentAttemptEl)
@@ -416,11 +515,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (remainingAttemptsEl)
                 remainingAttemptsEl.textContent = MAX_ATTEMPTS - currentAttempt;
 
-            // ===============================
-            // CALCULAR RESULTADO
-            // ===============================
-
             let score = 0;
+            const wrongQuestions = [];
 
             questions.forEach((q, i) => {
 
@@ -436,6 +532,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         : selected[0] === q.correct;
 
                 questionResults[i] = correct;
+
+                if (!correct) wrongQuestions.push(q.id);
 
                 options.forEach((opt, idx) => {
 
@@ -472,6 +570,16 @@ document.addEventListener("DOMContentLoaded", function () {
                      Result: <b>${percent >= 70 ? "✅ APPROVED" : "❌ FAIL  "}</b>`;
 
             }
+
+            // ===============================
+            // SALVAR RESULTADO NO HISTÓRICO
+            // ===============================
+
+            const stats = calculateStats(questions);
+            saveAttemptResult(stats, questions, questionResults); // <- enviar resultados também
+
+            // SALVAR QUESTÕES ERRADAS PARA REVISÃO
+            localStorage.setItem("reviewQuestions", JSON.stringify(wrongQuestions));
 
             if (resultOverlay)
                 resultOverlay.style.display = "flex";
