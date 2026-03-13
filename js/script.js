@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // CONFIGURAÇÃO DE TENTATIVAS
     // ===============================
 
-    const MAX_ATTEMPTS = 100;
+    const MAX_ATTEMPTS = 3;
     const BLOCK_TIME = 3 * 60 * 1000;
 
     function getAttempts() {
