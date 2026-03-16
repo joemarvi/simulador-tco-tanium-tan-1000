@@ -94,8 +94,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const topControls = document.getElementById("topControls");
     const footerControls = document.getElementById("footerControls");
 
-    // NOVO BOTÃO DE HISTÓRICO
     const openHistory = document.getElementById("openHistory");
+
+    // ALERTA NOVO
+    const attemptsAlert = document.getElementById("attemptsAlert");
+
+    // apenas visual — não interfere na lógica do exame
+    if (attemptsAlert && currentAttempt >= MAX_ATTEMPTS) {
+        attemptsAlert.style.display = "flex";
+    }
 
     // ===============================
     // STATE
@@ -124,23 +131,34 @@ document.addEventListener("DOMContentLoaded", function () {
     currentAttemptEl.textContent = Math.min(currentAttempt, MAX_ATTEMPTS);
     remainingAttemptsEl.textContent = Math.max(0, MAX_ATTEMPTS - currentAttempt);
 
+    // MOSTRAR ALERTA SE TENTATIVAS ESGOTADAS
+    if (currentAttempt >= MAX_ATTEMPTS) {
+
+        if (attemptsAlert)
+            attemptsAlert.style.display = "flex";
+
+        if (startBtn) {
+            startBtn.style.pointerEvents = "none";
+            startBtn.style.opacity = "0.6";
+        }
+
+    }
     // ===============================
     // PREPARAR QUESTÕES
     // ===============================
 
     let questions = prepareQuestions(questionBank);
 
-    // Função para atualizar a contagem de questões
     function updateTotalQuestionsDisplay() {
         if (totalQuestions) {
             totalQuestions.textContent = questions.length;
         }
     }
 
-    // Checar se estamos no modo de revisão
     const reviewData = localStorage.getItem("reviewQuestions");
 
     if (reviewData) {
+
         let reviewIds = [];
 
         try {
@@ -149,39 +167,39 @@ document.addEventListener("DOMContentLoaded", function () {
             console.warn("Erro ao carregar revisão");
         }
 
-        // Log debug
         console.log("=== Review Questions Loaded IDs ===", reviewIds);
 
-        // Criar cópias das questões para evitar alterar o questionBank original
         questions = reviewIds.map(id => {
+
             const q = questionBank.find(q => String(q.id) === String(id));
+
             if (!q) {
                 console.warn(`Questão com id ${id} não encontrada no questionBank.`);
                 return null;
             }
 
-            // cópia para não alterar o original
             const copy = { ...q, answers: q.answers ? [...q.answers] : [] };
+
             if (copy.type === "true_false") {
                 copy.answers = ["Verdadeiro", "Falso"];
                 copy._reviewNoShuffle = true;
             }
 
             console.log(`Review question loaded: ID=${copy.id}, type=${copy.type}, question="${copy.question}"`);
+
             return copy;
+
         }).filter(q => q != null);
 
-        // Limpar localStorage após carregar
         localStorage.removeItem("reviewQuestions");
 
-        // Renderiza imediatamente se estiver em review
         if (quiz) {
             console.log(`Renderizando ${questions.length} questões de revisão...`);
             renderQuestions(quiz, questions, questionBank);
         }
+
     }
 
-    // Atualiza a contagem de questões independente do modo
     updateTotalQuestionsDisplay();
 
     // ===============================
@@ -248,6 +266,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (pauseBtn) {
         pauseBtn.addEventListener("click", () => {
+
+            console.log("Pause clicked", finished, timerStarted, timer);
 
             if (!finished && timerStarted && timer) {
 
@@ -357,7 +377,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!attempt) return;
 
-        // SALVAR OS ÍNDICES DAS QUESTÕES ERRADAS
         const wrongQuestions = [];
 
         attempt.questions.forEach((q, i) => {
@@ -367,6 +386,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
         });
+
         localStorage.setItem(
             "reviewQuestions",
             JSON.stringify(wrongQuestions)
@@ -571,14 +591,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-            // ===============================
-            // SALVAR RESULTADO NO HISTÓRICO
-            // ===============================
-
             const stats = calculateStats(questions);
-            saveAttemptResult(stats, questions, questionResults); // <- enviar resultados também
+            saveAttemptResult(stats, questions, questionResults);
 
-            // SALVAR QUESTÕES ERRADAS PARA REVISÃO
             localStorage.setItem("reviewQuestions", JSON.stringify(wrongQuestions));
 
             if (resultOverlay)

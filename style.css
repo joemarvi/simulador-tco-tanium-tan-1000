@@ -66,6 +66,23 @@ body {
     border       : 1px solid #e2e8f0;
 }
 
+.result-history-btn {
+    margin-bottom   : 32px;
+    background-color: #a7a7a7;
+    color           : #e1e1e1f8;
+    box-shadow      : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-weight     : 500;
+    font-family     : IBM Plex Sans, sans-serif;
+    display         : block;
+    margin-left     : auto;
+    margin-right    : auto;
+}
+
+.result-history-btn:hover {
+    background-color: #181818;
+    font-weight     : 500;
+}
+
 .logo-tanium {
     display    : block;
     padding    : 8px;
@@ -267,6 +284,11 @@ SESSÃO EXAM BLUEPRINT – ESTILOS CARD RESPONSIVOS
     height        : 100%;
     /* Garante que todos os cards ocupem a altura total da célula do grid */
     box-sizing    : border-box;
+
+    i {
+        scale: 0.6;
+        color: #008a29;
+    }
 }
 
 #examBlueprint .blueprint-item:hover {
@@ -508,7 +530,7 @@ header h1 {
     background-color: #303030;
     color           : #e1e1e1f8;
     box-shadow      : rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    font-weight     : 300;
+    font-weight     : 500;
     font-family     : IBM Plex Sans, sans-serif;
     display         : block;
     margin-left     : auto;
@@ -859,6 +881,35 @@ button:active {
     border       : none;
     border-radius: 6px;
     cursor       : pointer;
+}
+
+.attempts-alert {
+    position     : fixed;
+    top          : 20px;
+    right        : 20px;
+    background   : #d32f2f;
+    color        : white;
+    padding      : 14px 20px;
+    border-radius: 8px;
+    font-weight  : 600;
+    box-shadow   : 0 6px 20px rgba(0, 0, 0, 0.25);
+    z-index      : 9999;
+    display      : flex;
+    align-items  : center;
+    gap          : 10px;
+    animation    : slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity  : 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity  : 1;
+    }
 }
 
 /* ========================================

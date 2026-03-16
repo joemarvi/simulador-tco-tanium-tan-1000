@@ -174,12 +174,15 @@ button.clear-history-btn {
 BACK BUTTON
 =============================== */
 .back-btn {
-    background: #4f46e5;
-    color     : white;
+
+    background : #005814;
+    color      : white;
+    font-weight: 500;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 
 .back-btn:hover {
-    background: #4338ca;
+    background: #0a9a00;
     transform : translateY(-1px);
 }
 
