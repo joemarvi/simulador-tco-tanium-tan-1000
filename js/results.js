@@ -10,9 +10,16 @@ export function calculateStats(questions) {
             .map(input => parseInt(input.value));
 
         let correct = false;
+
         if (q.type === "multi_select") {
-            selected.sort();
-            correct = JSON.stringify(selected) === JSON.stringify([...q.correct].sort());
+
+            const correctAnswers = [...q.correct];
+
+            // regra correta: todas certas e nenhuma errada
+            correct =
+                selected.length === correctAnswers.length &&
+                selected.every(val => correctAnswers.includes(val));
+
         } else {
             correct = selected[0] === q.correct;
         }
@@ -33,11 +40,33 @@ export function saveAttemptResult(stats, questions, questionResults) {
     let totalCorrect = 0;
 
     questions.forEach((q, i) => {
-        const correct = questionResults ? questionResults[i] : false;
+
+        let correct = false;
+
+        if (questionResults) {
+            correct = questionResults[i];
+        } else {
+
+            const selected = Array.from(document.querySelectorAll(`input[name='q${i}']:checked`))
+                .map(input => parseInt(input.value));
+
+            if (q.type === "multi_select") {
+
+                const correctAnswers = [...q.correct];
+
+                correct =
+                    selected.length === correctAnswers.length &&
+                    selected.every(val => correctAnswers.includes(val));
+
+            } else {
+                correct = selected[0] === q.correct;
+            }
+        }
 
         if (correct) {
             totalCorrect++;
         } else {
+
             const selected = Array.from(document.querySelectorAll(`input[name='q${i}']:checked`))
                 .map(input => parseInt(input.value));
 

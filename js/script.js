@@ -546,10 +546,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const options = document.querySelectorAll(`input[name='q${i}']`);
 
-                let correct =
-                    (q.type === "multi_select")
-                        ? JSON.stringify([...selected].sort()) === JSON.stringify([...q.correct].sort())
-                        : selected[0] === q.correct;
+                let correct = false;
+
+                if (q.type === "multi_select") {
+
+                    const correctAnswers = [...q.correct];
+
+                    correct =
+                        selected.length === correctAnswers.length &&
+                        selected.every(val => correctAnswers.includes(val));
+
+                } else {
+
+                    correct = selected[0] === q.correct;
+
+                }
 
                 questionResults[i] = correct;
 

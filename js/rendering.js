@@ -1,3 +1,4 @@
+//js\rendering.js
 import { getResultsHistory } from "./results.js";
 
 export function renderQuestions(quiz, questions, questionBank = null) {
@@ -150,9 +151,11 @@ ${q.explanation}
 
                     if (q.type === "multi_select") {
 
-                        selected.sort();
+                        const correctAnswers = [...q.correct];
 
-                        correct = JSON.stringify(selected) === JSON.stringify([...q.correct].sort());
+                        correct =
+                            selected.length === correctAnswers.length &&
+                            selected.every(val => correctAnswers.includes(val));
 
                     } else {
 
